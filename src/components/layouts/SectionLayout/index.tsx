@@ -2,15 +2,22 @@ import { Text } from "@/components";
 
 import * as S from "./styled";
 import { Container } from "..";
+import React from "react";
 
 export interface SectionLayoutProps {
-  title: string;
+  title: string | React.ReactNode;
   subtitle?: string | false;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   sectionBackgroundColor?: string;
-  color?: string;
 }
 
+/**
+ *
+ * @param title[string]: Section's title
+ * @param subtitle[string]: Section's subtitle
+ * @param children[React.ReactNode]: Section's content
+ * @param sectionBackgroundColor[string]: Section's background color
+ */
 export const SectionLayout: React.FC<SectionLayoutProps> = ({
   title,
   subtitle,
@@ -33,9 +40,13 @@ export const SectionLayout: React.FC<SectionLayoutProps> = ({
               <></>
             )}
           </S.SectionLayoutTitleContainer>
-          <S.SectionLayoutContentContainer>
-            {children}
-          </S.SectionLayoutContentContainer>
+          {children ? (
+            <S.SectionLayoutContentContainer>
+              {children}
+            </S.SectionLayoutContentContainer>
+          ) : (
+            <></>
+          )}
         </Container>
       </S.SectionLayoutContainer>
     </>

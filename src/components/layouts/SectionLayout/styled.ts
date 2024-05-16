@@ -18,7 +18,6 @@ export const SectionLayoutTitleContainer = styled.div`
   align-items: flex-start;
   flex-direction: column;
   row-gap: 2rem;
-  margin-bottom: 2rem;
 `;
 
 export const SectionLayoutContentContainer = styled.div`
