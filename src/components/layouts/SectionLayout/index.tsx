@@ -29,7 +29,7 @@ export const SectionLayout: React.FC<SectionLayoutProps> = ({
       <S.SectionLayoutContainer backgroundColor={sectionBackgroundColor}>
         <Container>
           <S.SectionLayoutTitleContainer>
-            <Text size={5} weight={900}>
+            <Text size={4.6} weight={900}>
               {title}
             </Text>
             {subtitle ? (
