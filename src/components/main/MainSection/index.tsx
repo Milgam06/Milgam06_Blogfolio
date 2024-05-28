@@ -1,9 +1,11 @@
 import { SectionLayout, Text } from "@/components";
 
+import * as S from "./styled";
+
 export const MainSection: React.FC = () => {
   return (
     <>
-      <SectionLayout
+      {/* <SectionLayout
         title={
           <span>
             제 이름은{" "}
@@ -18,7 +20,33 @@ export const MainSection: React.FC = () => {
           </span>
         }
         subtitle="소통하며 생각하는 개발자"
-      ></SectionLayout>
+      ></SectionLayout> */}
+      <SectionLayout sectionBackgroundColor="#000">
+        <S.MainSectionTitleContainer
+          initial={{
+            opacity: 0.2,
+          }}
+          animate={{
+            opacity: 1,
+            transition: { duration: 0.4, ease: "easeIn", delay: 0 },
+          }}
+        >
+          <Text
+            size={10}
+            weight={900}
+            color="linear-gradient(to right, #A871FD,#021AA6)"
+          >
+            ' 박여준 '
+          </Text>
+          <Text
+            size={3}
+            weight={700}
+            color="linear-gradient(to right, #021AA6,#A871FD)"
+          >
+            소통하며 생각하는 개발자
+          </Text>
+        </S.MainSectionTitleContainer>
+      </SectionLayout>
     </>
   );
 };
