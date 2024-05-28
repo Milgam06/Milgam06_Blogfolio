@@ -16,6 +16,7 @@ export const globalStyle = () => {
       font-size: 14px;
       width: 100%;
       height: 100%;
+      cursor: default;
       -ms-overflow-style: none;
       ::-webkit-scrollbar {
         display: none;
