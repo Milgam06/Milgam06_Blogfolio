@@ -1,9 +1,14 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
-export const ButtonContainer = styled(motion.div)`
-  width: 14rem;
-  height: 20rem;
+export interface ButtonStyleProps {
+  scale: boolean;
+}
+
+export const ButtonContainer = styled(motion.div)<ButtonStyleProps>`
+  /* width: 14rem; */
+  width: ${({ scale }) => (scale ? "18rem" : "12rem")};
+  height: ${({ scale }) => (scale ? "24rem" : "16rem")};
   display: flex;
   justify-content: center;
   align-items: center;
