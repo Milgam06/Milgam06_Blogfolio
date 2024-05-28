@@ -1,11 +1,12 @@
+import React from "react";
+
 import { Text } from "@/components";
 
 import * as S from "./styled";
 import { Container } from "..";
-import React from "react";
 
 export interface SectionLayoutProps {
-  title: string | React.ReactNode;
+  title?: string | React.ReactNode;
   subtitle?: string | false;
   children?: React.ReactNode;
   sectionBackgroundColor?: string;
@@ -28,18 +29,22 @@ export const SectionLayout: React.FC<SectionLayoutProps> = ({
     <>
       <S.SectionLayoutContainer backgroundColor={sectionBackgroundColor}>
         <Container>
-          <S.SectionLayoutTitleContainer>
-            <Text size={4.6} weight={900}>
-              {title}
-            </Text>
-            {subtitle ? (
-              <Text size={1.6} weight={300}>
-                {subtitle}
+          {title ? (
+            <S.SectionLayoutTitleContainer>
+              <Text size={4.6} weight={900}>
+                {title}
               </Text>
-            ) : (
-              <></>
-            )}
-          </S.SectionLayoutTitleContainer>
+              {subtitle ? (
+                <Text size={1.6} weight={300}>
+                  {subtitle}
+                </Text>
+              ) : (
+                <></>
+              )}
+            </S.SectionLayoutTitleContainer>
+          ) : (
+            <> </>
+          )}
           {children ? (
             <S.SectionLayoutContentContainer>
               {children}
