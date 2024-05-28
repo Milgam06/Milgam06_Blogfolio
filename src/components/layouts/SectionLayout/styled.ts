@@ -10,7 +10,7 @@ export const SectionLayoutContainer = styled.section<{
   flex: 1;
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "#fff"};
-  border: 1px solid red;
+  scroll-snap-align: start;
 `;
 
 export const SectionLayoutTitleContainer = styled.div`
