@@ -1,4 +1,5 @@
 import { Global } from "@emotion/react";
+import { ModalProvider } from "@/providers";
 import { globalStyle } from "@/styles";
 
 import { Router } from "./router";
@@ -6,8 +7,10 @@ import { Router } from "./router";
 export const App: React.FC = () => {
   return (
     <>
-      <Global styles={globalStyle} />
-      <Router />
+      <ModalProvider>
+        <Global styles={globalStyle} />
+        <Router />
+      </ModalProvider>
     </>
   );
 };
