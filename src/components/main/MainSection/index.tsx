@@ -34,14 +34,14 @@ export const MainSection: React.FC = () => {
           <Text
             size={10}
             weight={900}
-            color="linear-gradient(to right, #A871FD,#021AA6)"
+            color="linear-gradient(to right, #cba8ff,#0e2ee2)"
           >
-            ' 박여준 '
+            {"{ 박여준 }"}
           </Text>
           <Text
             size={3}
             weight={700}
-            color="linear-gradient(to right, #021AA6,#A871FD)"
+            color="linear-gradient(to right, #0e2ee2,#cba8ff)"
           >
             소통하며 생각하는 개발자
           </Text>

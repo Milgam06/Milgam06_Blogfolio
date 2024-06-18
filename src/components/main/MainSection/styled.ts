@@ -7,5 +7,5 @@ export const MainSectionTitleContainer = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 3rem;
+  row-gap: 3.2rem;
 `;
