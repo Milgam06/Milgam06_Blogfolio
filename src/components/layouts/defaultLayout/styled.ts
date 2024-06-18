@@ -5,4 +5,5 @@ export const DefaultLayoutContainer = styled.div`
   height: 100%;
   overflow: auto;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 `;
