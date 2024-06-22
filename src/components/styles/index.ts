@@ -1,2 +1,1 @@
-export * from "./CenterContainer";
-export * from "./SpaceBetweenContainer";
+export * from "./styled";
