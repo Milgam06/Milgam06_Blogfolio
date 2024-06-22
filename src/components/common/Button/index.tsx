@@ -6,14 +6,14 @@ export interface ButtonProps extends S.ButtonStyleProps {
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  scale,
+  isLarge,
   children,
   onClickHandler,
 }) => {
   return (
     <>
       <S.ButtonContainer
-        scale={scale}
+        isLarge={isLarge}
         onClick={onClickHandler}
         whileHover={{ scale: 1.1 }}
         transition={{ duration: 0.1 }}
