@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
-import { SpaceBetweenContainer, CenterContainer } from "@/components";
+import { SpaceBetweenContainer } from "@/components/styles";
 
 export const ModalOverlay = styled(motion.div)`
   position: fixed;
@@ -23,9 +23,10 @@ export const ModalCloseContainer = styled.div`
 `;
 
 export const ModalContainer = styled(SpaceBetweenContainer)`
-  flex-direction: column;
+  display: flex;
   min-width: 32rem;
+  border: none;
   border-radius: 1rem;
-  background-color: #2d2f34;
+  background-color: #fff;
   z-index: 999;
 `;

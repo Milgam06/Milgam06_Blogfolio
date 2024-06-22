@@ -1,4 +1,3 @@
-import { useModal } from "@/providers";
 import * as S from "./styled";
 
 export interface ModalProps {
@@ -7,7 +6,6 @@ export interface ModalProps {
 
 export interface ModalOverlayProps {
   children?: React.ReactNode;
-  isCloseAll?: boolean;
   onCloseClick?: () => void;
 }
 
@@ -21,10 +19,8 @@ export const ModalComponent: React.FC<ModalProps> = ({ children }) => {
 
 export const ModalOverlay: React.FC<ModalOverlayProps> = ({
   children,
-  isCloseAll,
   onCloseClick,
 }) => {
-  const { closeAll } = useModal();
   return (
     <S.ModalOverlay
       initial={{ opacity: 0 }}
@@ -32,7 +28,7 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
     >
-      <S.ModalCloseContainer onClick={isCloseAll ? closeAll : onCloseClick} />
+      <S.ModalCloseContainer onClick={onCloseClick} />
       {children}
     </S.ModalOverlay>
   );
