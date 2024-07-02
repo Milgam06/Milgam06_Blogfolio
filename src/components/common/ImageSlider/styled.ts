@@ -15,5 +15,6 @@ export const ImageSliderContentWrapper = styled.img`
   min-width: 20rem;
   max-width: 36rem;
   height: 20rem;
+  border-radius: 0.4rem;
   margin: 0 1rem;
 `;

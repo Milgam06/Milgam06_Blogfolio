@@ -9,7 +9,7 @@ export const ImageSlider = () => {
   return (
     <>
       <S.ImageSliderWrapper>
-        <Tiker duration={50} isPlaying={false}>
+        <Tiker duration={40} isPlaying={false}>
           {images.map((image, i) => (
             <S.ImageSliderContentWrapper key={i} src={image} />
           ))}
