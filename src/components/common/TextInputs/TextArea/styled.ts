@@ -7,6 +7,7 @@ export const TextareaContainer = styled.textarea`
   font-size: 1.2rem;
   border: 1px solid #ccc;
   border-radius: 0.6rem;
+  resize: none;
   &:focus {
     border: 1px solid red;
   }
