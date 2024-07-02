@@ -9,7 +9,7 @@ export const StepSectionContentContainer = styled(motion.div)`
   grid-template-columns: repeat(3, 1fr);
   row-gap: 3rem;
   overflow: auto;
-  padding: 4rem 0;
+  padding: 2rem 0;
   /* border: 1px solid red; */
   ::-webkit-scrollbar {
     display: none;

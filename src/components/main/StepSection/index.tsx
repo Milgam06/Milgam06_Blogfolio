@@ -1,4 +1,4 @@
-import { SectionLayout, Button, StepModal } from "@/components";
+import { SectionLayout, Button, StepModal, AddModal } from "@/components";
 import { useFadeInScroll } from "@/hooks";
 import { useModal } from "@/providers";
 
@@ -10,6 +10,9 @@ export const StepSection: React.FC = () => {
   const onClick = () => {
     open({ children: <StepModal /> });
     console.log("asdf");
+  };
+  const onOpenAddModal = () => {
+    open({ children: <AddModal /> });
   };
   return (
     <>
@@ -50,6 +53,9 @@ export const StepSection: React.FC = () => {
           </Button>
           <Button isLarge={true} onClickHandler={onClick}>
             asdf
+          </Button>
+          <Button isLarge={true} onClickHandler={onOpenAddModal}>
+            +
           </Button>
         </S.StepSectionContentContainer>
       </SectionLayout>
