@@ -6,7 +6,6 @@ export interface ButtonStyleProps {
 }
 
 export const ButtonContainer = styled(motion.div)<ButtonStyleProps>`
-  /* width: 14rem; */
   width: ${({ isLarge }) => (isLarge ? "18rem" : "12rem")};
   height: ${({ isLarge }) => (isLarge ? "24rem" : "16rem")};
   display: flex;
