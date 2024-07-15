@@ -1,4 +1,4 @@
-import { SectionLayout, Button, StepModal, AddModal } from "@/components";
+import { SectionLayout, Button, StepModal, AddModal, Text } from "@/components";
 import { useFadeInScroll } from "@/hooks";
 import { useModal } from "@/providers";
 
@@ -16,45 +16,45 @@ export const StepSection: React.FC = () => {
   };
   return (
     <>
-      <SectionLayout>
+      <SectionLayout title="Exerience" subtitle="저의 소중한 경험들이에요.">
         <S.StepSectionContentContainer {...fadeInScroll({ delay: 0.1 })}>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onClick}>
+          <Button isLarge={false} onClickHandler={onClick}>
             asdf
           </Button>
-          <Button isLarge={true} onClickHandler={onOpenAddModal}>
+          <Button isLarge={false} onClickHandler={onOpenAddModal}>
             +
           </Button>
         </S.StepSectionContentContainer>

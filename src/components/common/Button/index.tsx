@@ -1,3 +1,4 @@
+import { before } from "node:test";
 import * as S from "./styled";
 
 export interface ButtonProps extends S.ButtonStyleProps {
@@ -15,7 +16,7 @@ export const Button: React.FC<ButtonProps> = ({
       <S.ButtonContainer
         isLarge={isLarge}
         onClick={onClickHandler}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.08 }}
         transition={{ duration: 0.1 }}
       >
         <S.ButtonContentContainer>{children}</S.ButtonContentContainer>
