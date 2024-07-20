@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 import { ModalProps, Modal } from "@/components";
-
+import { AnimatePresence } from "framer-motion";
 export interface ModalContextProps {
   open: (props: ModalProps) => void;
   close: () => void;
@@ -20,11 +20,13 @@ export const ModalProvider: React.FC<ModalProps> = ({ children }) => {
   return (
     <>
       <ModalContext.Provider value={{ open, close }}>
-        {modal !== undefined && (
-          <Modal.Overlay onCloseClick={close}>
-            <Modal {...modal} />
-          </Modal.Overlay>
-        )}
+        <AnimatePresence>
+          {modal !== undefined && (
+            <Modal.Overlay onCloseClick={close}>
+              <Modal {...modal} />
+            </Modal.Overlay>
+          )}
+        </AnimatePresence>
         {children}
       </ModalContext.Provider>
     </>
