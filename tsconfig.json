@@ -28,7 +28,7 @@
       "@/constants/*": ["src/constants/*"],
       "@/pages/*": ["src/pages/*"],
       "@/hooks/*": ["src/hooks/*"],
-      "@/api/*": ["src/api/*"],
+      "@/api/*": ["src/apis/*"],
       "@/styles/*": ["src/styles/*"],
       "@/types/*": ["src/types/*"],
       "@/store/*": ["src/store/*"],
