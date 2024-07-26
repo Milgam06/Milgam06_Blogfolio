@@ -1,13 +1,35 @@
 import DropZone from "react-dropzone";
+import React, { useEffect, useState } from "react";
 
 import { Text, TextArea, Input } from "@/components";
 
 import * as S from "./styled";
 
+export interface DropedFilesProps {
+  url: string;
+  fileName: string;
+  fileSize: number;
+}
+
 export const AddModal: React.FC = () => {
+  const [dropedFiles, setDropedFiles] = useState<DropedFilesProps[]>([]);
   const onDropHandler = (acceptedFiles: File[]) => {
-    console.log(acceptedFiles);
+    // const reader = new FileReader();
+    const file = acceptedFiles;
+    if (file) {
+      // reader.readAsDataURL(file[0]);
+      const fileURL = URL.createObjectURL(file[0]);
+      console.log(file);
+      setDropedFiles((prev) => [
+        ...prev,
+        { url: fileURL, fileName: file[0].name, fileSize: file[0].size },
+      ]);
+    }
   };
+
+  useEffect(() => {
+    console.log(dropedFiles);
+  }, [dropedFiles]);
   return (
     <>
       <S.AddModalContainer>
@@ -30,15 +52,12 @@ export const AddModal: React.FC = () => {
             maxSize={3272000}
           >
             {({ getRootProps, getInputProps }) => (
-              <section>
-                <div
-                  style={{ border: "1px solid red" }}
-                  {...getRootProps({ className: "dropzone" })}
-                >
-                  <input {...getInputProps()} />
-                  <p>Drag 'n' drop some files here, or click to select files</p>
-                </div>
-              </section>
+              <S.AddModalFileUploadContainer
+                {...getRootProps({ className: "dropzone" })}
+              >
+                <input {...getInputProps()} />
+                <p>소중한 경험들의 이미지를 업로드 해주세요!</p>
+              </S.AddModalFileUploadContainer>
             )}
           </DropZone>
         </S.AddModalContentContainer>

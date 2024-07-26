@@ -14,4 +14,9 @@ export const AddModalContentContainer = styled.form`
   gap: 1rem;
 `;
 
-// export const
+export const AddModalFileUploadContainer = styled(CenterContainer)`
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 0.6rem;
+  padding: 2rem 1rem;
+`;
