@@ -6,7 +6,12 @@ import { useModal } from "@/providers";
 
 import * as S from "./styled";
 
-export const StepModal: React.FC = () => {
+export interface StepModalProps {
+  title: string;
+  content: string;
+}
+
+export const StepModal: React.FC<StepModalProps> = ({ title, content }) => {
   const { close } = useModal();
   return (
     <>
@@ -14,7 +19,7 @@ export const StepModal: React.FC = () => {
         <S.StepModalContentContainer>
           <S.StepModalContentHeader>
             <Text size={3} weight={600}>
-              Title
+              {title}
             </Text>
             <FontAwesomeIcon
               icon={faXmark}
@@ -30,13 +35,7 @@ export const StepModal: React.FC = () => {
           <ImageSlider />
           <S.StepModalContentTaskContainer>
             <Text size={1.6} weight={500}>
-              Task 1
-            </Text>
-            <Text size={1.6} weight={500}>
-              Task 2
-            </Text>
-            <Text size={1.6} weight={500}>
-              Task 3
+              {content}
             </Text>
           </S.StepModalContentTaskContainer>
         </S.StepModalContentContainer>
