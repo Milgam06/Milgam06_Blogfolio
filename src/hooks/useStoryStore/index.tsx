@@ -1,12 +1,6 @@
 import { db } from "@/apis";
 
-import {
-  getDocs,
-  doc,
-  collection,
-  setDoc,
-  getDoc,
-} from "firebase/firestore/lite";
+import { getDocs, doc, collection, setDoc, getDoc } from "firebase/firestore";
 
 export interface StoryProps {
   title: string;
