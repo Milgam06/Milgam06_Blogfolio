@@ -9,9 +9,9 @@ export const StepModalContainer = styled(CenterContainer)`
 export const StepModalContentContainer = styled(SpaceBetweenContainer)`
   flex-direction: column;
   max-width: 40rem;
-  max-height: 48rem;
+  max-height: 46rem;
   min-width: 30rem;
-  min-height: 38rem;
+  min-height: 36rem;
   @media (max-width: 675px) {
     max-width: 30rem;
     max-height: 38rem;
@@ -21,14 +21,23 @@ export const StepModalContentContainer = styled(SpaceBetweenContainer)`
 `;
 export const StepModalContentHeader = styled(SpaceBetweenContainer)`
   width: 100%;
+  padding: 1rem 0;
+  border: 1px solid red;
 `;
 
 export const StepModalContentTaskContainer = styled.div`
   width: 100%;
+  max-height: 8rem;
   display: flex;
   justify-content: space-between;
   align-items: start;
   flex-direction: column;
+  overflow: auto;
   gap: 1rem;
-  border: 1px solid black;
+  text-align: left;
+  line-height: 1.2;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;

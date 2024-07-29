@@ -1,43 +1,70 @@
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import { Text, ImageSlider } from "@/components";
 import { useModal } from "@/providers";
+import { useStoryStore, StoryResponeProps } from "@/hooks";
 
 import * as S from "./styled";
 
 export interface StepModalProps {
-  title: string;
-  content: string;
+  id: string;
 }
 
-export const StepModal: React.FC<StepModalProps> = ({ title, content }) => {
+export const StepModal: React.FC<StepModalProps> = ({ id }) => {
   const { close } = useModal();
+  const { getStory } = useStoryStore();
+
+  const [loading, setLoading] = useState<boolean>(true);
+  const [story, setStory] = useState<StoryResponeProps | undefined>({
+    id: "",
+    title: "",
+    content: "",
+  });
+
+  useEffect(() => {
+    const fetchStory = async () => {
+      const storedStory = await getStory(id);
+      setStory(storedStory);
+      setLoading(false);
+    };
+    fetchStory();
+  }, [id]);
+
   return (
     <>
       <S.StepModalContainer>
         <S.StepModalContentContainer>
-          <S.StepModalContentHeader>
-            <Text size={3} weight={600}>
-              {title}
-            </Text>
-            <FontAwesomeIcon
-              icon={faXmark}
-              style={{
-                width: "1.4rem",
-                height: "1.4rem",
-                opacity: 0.4,
-                cursor: "pointer",
-              }}
-              onClick={close}
-            />
-          </S.StepModalContentHeader>
-          <ImageSlider />
-          <S.StepModalContentTaskContainer>
-            <Text size={1.6} weight={500}>
-              {content}
-            </Text>
-          </S.StepModalContentTaskContainer>
+          {loading ? (
+            <>
+              <h1>loading</h1>
+            </>
+          ) : (
+            <>
+              <S.StepModalContentHeader>
+                <Text size={3} weight={600}>
+                  {story?.title}
+                </Text>
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  style={{
+                    width: "1.4rem",
+                    height: "1.4rem",
+                    opacity: 0.4,
+                    cursor: "pointer",
+                  }}
+                  onClick={close}
+                />
+              </S.StepModalContentHeader>
+              <ImageSlider />
+              <S.StepModalContentTaskContainer>
+                <Text size={1.6} weight={500}>
+                  {story?.content}
+                </Text>
+              </S.StepModalContentTaskContainer>
+            </>
+          )}
         </S.StepModalContentContainer>
       </S.StepModalContainer>
     </>
