@@ -16,13 +16,15 @@ export const StepSection: React.FC = () => {
   useEffect(() => {
     const fetchStories = async () => {
       const storedStories = await getAllStories();
-      setStories(storedStories);
+      if (storedStories) {
+        setStories(storedStories);
+      }
     };
     fetchStories();
   }, []);
 
-  const onClick = () => {
-    // open({ children: <StepModal /> });
+  const onClick = (id: string) => {
+    open({ children: <StepModal id={id} /> });
     console.log("asdf");
   };
   const onOpenAddModal = () => {
@@ -33,7 +35,7 @@ export const StepSection: React.FC = () => {
       <SectionLayout title="Exerience" subtitle="저의 소중한 경험들이에요.">
         <S.StepSectionContentContainer {...fadeInScroll({ delay: 0.08 })}>
           {stories.map((story) => (
-            <Button isLarge={true} onClickHandler={onClick}>
+            <Button isLarge={true} onClickHandler={() => onClick(story.id)}>
               {story.title}
             </Button>
           ))}
