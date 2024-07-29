@@ -12,9 +12,9 @@ export const ImageSliderContentWrapper = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 20rem;
+  min-width: 18rem;
   max-width: 36rem;
-  height: 20rem;
+  height: 18rem;
   border-radius: 0.4rem;
   margin: 0 1rem;
 `;
