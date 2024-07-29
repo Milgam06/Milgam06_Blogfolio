@@ -55,11 +55,11 @@ export const AddModal: React.FC = () => {
         return;
       } else {
         await addStory({ title: titleValue, content: contentValue });
-        console.log("submit");
         close();
+        console.log("submit");
       }
-    } catch (e) {
-      console.error("error", e);
+    } catch (error) {
+      console.error("error", error);
     }
   };
 
@@ -96,7 +96,7 @@ export const AddModal: React.FC = () => {
               </S.AddModalFileUploadContainer>
             )}
           </DropZone>
-          <S.AddModalSubmitButton onClick={onSubmitHandler} type="submit">
+          <S.AddModalSubmitButton onClick={() => onSubmitHandler} type="submit">
             <Text size={1.2} weight={600} color="#fff">
               제출하기
             </Text>
