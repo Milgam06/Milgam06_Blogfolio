@@ -14,6 +14,7 @@ export const ButtonContainer = styled(motion.div)<ButtonStyleProps>`
   border: 1px solid #aeaeae;
   border-radius: 1rem;
   background-color: #fff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 `;
 
