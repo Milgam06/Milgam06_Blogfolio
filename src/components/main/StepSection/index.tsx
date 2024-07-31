@@ -23,7 +23,7 @@ export const StepSection: React.FC = () => {
     fetchStories();
   }, []);
 
-  const onClick = (id: string) => {
+  const onOpenStepModal = (id: string) => {
     open({ children: <StepModal id={id} /> });
     console.log("asdf");
   };
@@ -35,7 +35,10 @@ export const StepSection: React.FC = () => {
       <SectionLayout title="Exerience" subtitle="저의 소중한 경험들이에요.">
         <S.StepSectionContentContainer {...fadeInScroll({ delay: 0.08 })}>
           {stories.map((story) => (
-            <Button isLarge={true} onClickHandler={() => onClick(story.id)}>
+            <Button
+              isLarge={true}
+              onClickHandler={() => onOpenStepModal(story.id)}
+            >
               {story.title}
             </Button>
           ))}
