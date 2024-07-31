@@ -11,6 +11,7 @@ import {
 export interface StoryProps {
   title: string;
   content: string;
+  files: File[];
 }
 
 export interface StoryResponeProps extends StoryProps {
@@ -26,6 +27,7 @@ export const useStoryStore = () => {
           id: doc.id,
           title: doc.data().title,
           content: doc.data().content,
+          files: doc.data().files,
         })
       );
       console.log(typeof allStoryResult, "allStoryResult");
@@ -47,6 +49,7 @@ export const useStoryStore = () => {
         id: querySnapshot.id,
         title: querySnapshot.data()?.title,
         content: querySnapshot.data()?.content,
+        files: querySnapshot.data()?.files,
       };
       console.log(storyResult, "storyResult");
       return storyResult;
@@ -59,12 +62,13 @@ export const useStoryStore = () => {
    * @param title: title of Step
    * @param content: content of Step
    */
-  const addStory = async ({ title, content }: StoryProps) => {
+  const addStory = async ({ title, content, acceptedFiles }: StoryProps) => {
     try {
       const newStoryID = (await getLastID()) + 1;
       await setDoc(doc(db, "step", String(newStoryID)), {
         title: title,
         content: content,
+        files: acceptedFiles,
       });
     } catch (error) {
       console.log("firebaseFuck", error);
@@ -75,5 +79,6 @@ export const useStoryStore = () => {
     const lastStoryID = lastStory ? Number(lastStory.id) : 0;
     return lastStoryID;
   };
+
   return { getAllStories, getStory, addStory, getLastID };
 };

@@ -21,6 +21,7 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
     id: "",
     title: "",
     content: "",
+    files: [],
   });
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
     <>
       <S.StepModalContainer>
         <S.StepModalContentContainer>
-          {!loading ? (
+          {loading ? (
             <>
               <S.StepModalLoadingContainer>
                 <h1>loading</h1>
