@@ -53,6 +53,9 @@ export const AddModal: React.FC = () => {
       if (titleValue === "" || contentValue === "") {
         alert("모든 항목을 입력해주세요.");
         return;
+      } else if (titleValue.length > 14) {
+        alert("제목은 14자 이하로 작성해주세요.");
+        return;
       } else {
         await addStory({ title: titleValue, content: contentValue });
         close();
