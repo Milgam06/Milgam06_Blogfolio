@@ -36,9 +36,11 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
     <>
       <S.StepModalContainer>
         <S.StepModalContentContainer>
-          {loading ? (
+          {!loading ? (
             <>
-              <h1>loading</h1>
+              <S.StepModalLoadingContainer>
+                <h1>loading</h1>
+              </S.StepModalLoadingContainer>
             </>
           ) : (
             <>

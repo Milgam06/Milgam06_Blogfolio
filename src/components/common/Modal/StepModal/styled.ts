@@ -27,7 +27,7 @@ export const StepModalContentHeader = styled(SpaceBetweenContainer)`
 
 export const StepModalContentTaskContainer = styled.div`
   width: 100%;
-  max-height: 8rem;
+  max-height: 10rem;
   display: flex;
   justify-content: space-between;
   align-items: start;
@@ -40,4 +40,9 @@ export const StepModalContentTaskContainer = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+`;
+
+export const StepModalLoadingContainer = styled(CenterContainer)`
+  width: 100%;
+  border: 1px solid red;
 `;
