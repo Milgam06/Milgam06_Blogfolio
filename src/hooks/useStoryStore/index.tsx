@@ -32,6 +32,7 @@ export const useStoryStore = () => {
       return allStoryResult;
     } catch (error) {
       console.log("firebaseFuck", error);
+      return [];
     }
   };
 
@@ -60,22 +61,19 @@ export const useStoryStore = () => {
    */
   const addStory = async ({ title, content }: StoryProps) => {
     try {
-      const lastStoryID = (await getAllStories())?.slice(-1)[0].id;
-      if (Number(lastStoryID) === 0) {
-        await setDoc(doc(db, "step", "1"), {
-          title: title,
-          content: content,
-        });
-      } else {
-        await setDoc(doc(db, "step", String(Number(lastStoryID) + 1)), {
-          title: title,
-          content: content,
-        });
-      }
+      const newStoryID = (await getLastID()) + 1;
+      await setDoc(doc(db, "step", String(newStoryID)), {
+        title: title,
+        content: content,
+      });
     } catch (error) {
       console.log("firebaseFuck", error);
     }
   };
-
-  return { getAllStories, getStory, addStory };
+  const getLastID = async () => {
+    const lastStory = (await getAllStories())?.slice(-1)[0];
+    const lastStoryID = lastStory ? Number(lastStory.id) : 0;
+    return lastStoryID;
+  };
+  return { getAllStories, getStory, addStory, getLastID };
 };
