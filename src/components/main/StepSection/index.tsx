@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { SectionLayout, Button, StepModal, AddModal, Text } from "@/components";
+import { SectionLayout, Button, StepModal, AddModal } from "@/components";
 import { useFadeInScroll } from "@/hooks";
 import { useModal } from "@/providers";
 import { useStoryStore, StoryResponeProps } from "@/hooks";
