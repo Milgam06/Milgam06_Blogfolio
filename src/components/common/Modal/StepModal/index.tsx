@@ -17,17 +17,19 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
   const { getStory } = useStoryStore();
 
   const [loading, setLoading] = useState<boolean>(true);
-  const [story, setStory] = useState<StoryResponeProps | undefined>({
+  const [story, setStory] = useState<StoryResponeProps>({
     id: "",
     title: "",
     content: "",
-    files: [],
+    filesUrl: [],
   });
 
   useEffect(() => {
     const fetchStory = async () => {
       const storedStory = await getStory(id);
-      setStory(storedStory);
+      if (storedStory) {
+        setStory(storedStory);
+      }
       setLoading(false);
     };
     fetchStory();
@@ -47,7 +49,7 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
             <>
               <S.StepModalContentHeader>
                 <Text size={3} weight={600}>
-                  {story?.title}
+                  {story.title}
                 </Text>
                 <FontAwesomeIcon
                   icon={faXmark}
@@ -60,10 +62,10 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
                   onClick={close}
                 />
               </S.StepModalContentHeader>
-              <ImageSlider />
+              <ImageSlider images={story.filesUrl} />
               <S.StepModalContentTaskContainer>
                 <Text size={1.6} weight={500}>
-                  {story?.content}
+                  {story.content}
                 </Text>
               </S.StepModalContentTaskContainer>
             </>
