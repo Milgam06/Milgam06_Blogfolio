@@ -2,7 +2,7 @@ import DropZone from "react-dropzone";
 import React, { useEffect, useState } from "react";
 
 import { Text, TextArea, Input } from "@/components";
-import { useStoryStore } from "@/hooks";
+import { useStoryStore, useImageStore } from "@/hooks";
 
 import * as S from "./styled";
 import { useModal } from "@/providers";
@@ -16,11 +16,12 @@ export interface DropedFilesProps {
 export const AddModal: React.FC = () => {
   const { close } = useModal();
   const { addStory } = useStoryStore();
+  const { addImages } = useImageStore();
 
   // useState part
   const [titleValue, setTitleValue] = useState<string>("");
   const [contentValue, setContentValue] = useState<string>("");
-  const [dropedFiles, setDropedFiles] = useState<DropedFilesProps[]>([]);
+  const [dropedFiles, setDropedFiles] = useState<string[]>([]);
 
   // Handler part
   const onTitleChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,18 +34,15 @@ export const AddModal: React.FC = () => {
     setContentValue(e.target.value);
   };
 
-  const onDropHandler = (acceptedFiles: File[]) => {
-    // const reader = new FileReader();
-    const file = acceptedFiles;
-    if (file) {
-      // reader.readAsDataURL(file[0]);
-      const fileURL = URL.createObjectURL(file[0]);
-      console.log(file, "files");
-      setDropedFiles((prev) => [
-        ...prev,
-        { url: fileURL, fileName: file[0].name, fileSize: file[0].size },
-      ]);
-    }
+  const onDropHandler = async (acceptedFiles: File[]) => {
+    const uploadedFile = await Promise.all(
+      // Promise.all 을 사용하여, acceptedFiles 배열의 모든 파일을 addImages에 props 전달하고 비동기 처리를 통해 반환 값을 return
+      acceptedFiles.map(async (file) => {
+        const fileUrl = await addImages({ uploadedFile: file });
+        return fileUrl;
+      })
+    );
+    setDropedFiles((prev) => [...prev, ...uploadedFile]);
   };
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,8 +54,15 @@ export const AddModal: React.FC = () => {
       } else if (titleValue.length > 14) {
         alert("제목은 14자 이하로 작성해주세요.");
         return;
+      } else if (dropedFiles.length === 0) {
+        alert("이미지를 업로드 해주세요.");
+        return;
       } else {
-        await addStory({ title: titleValue, content: contentValue });
+        await addStory({
+          title: titleValue,
+          content: contentValue,
+          filesUrl: dropedFiles,
+        });
         close();
         console.log("submit");
       }
