@@ -12,7 +12,7 @@ export const ImageSliderContentWrapper = styled.img`
   justify-content: center;
   align-items: center;
   min-width: 18rem;
-  max-width: 36rem;
+  max-width: 40rem;
   height: 18rem;
   border-radius: 0.4rem;
   margin: 0 1rem;

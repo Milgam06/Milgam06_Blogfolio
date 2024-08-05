@@ -2,14 +2,15 @@ import Tiker from "framer-motion-ticker";
 
 import * as S from "./styled";
 
-import { NewJ, NewJ2, NewJ3, NewJ4, NewJ5, NewJ6 } from "@/assets";
+export interface ImageSliderProps {
+  images: string[];
+}
 
-export const ImageSlider = () => {
-  const images = [NewJ, NewJ2, NewJ3, NewJ4, NewJ5, NewJ6];
+export const ImageSlider = ({ images }: ImageSliderProps) => {
   return (
     <>
       <S.ImageSliderWrapper>
-        <Tiker duration={40} isPlaying={false}>
+        <Tiker duration={20} isPlaying={false}>
           {images.map((image, i) => (
             <S.ImageSliderContentWrapper key={i} src={image} />
           ))}
