@@ -10,6 +10,7 @@ export interface SectionLayoutProps {
   subtitle?: string | false;
   children?: React.ReactNode;
   sectionBackgroundColor?: string;
+  fullScreen?: boolean;
 }
 
 /**
@@ -18,41 +19,73 @@ export interface SectionLayoutProps {
  * @param subtitle[string]: Section's subtitle
  * @param children[React.ReactNode]: Section's content
  * @param sectionBackgroundColor[string]: Section's background color
+ * @param fullScreen[boolean]: Section's full screen option
  */
 export const SectionLayout: React.FC<SectionLayoutProps> = ({
   title,
   subtitle,
   children,
   sectionBackgroundColor,
+  fullScreen = false,
 }) => {
   return (
     <>
       <S.SectionLayoutContainer backgroundColor={sectionBackgroundColor}>
-        <Container>
-          {title ? (
-            <S.SectionLayoutTitleContainer>
-              <Text size={4.6} weight={900}>
-                {title}
-              </Text>
-              {subtitle ? (
-                <Text size={1.6} weight={300}>
-                  {subtitle}
+        {fullScreen ? (
+          <>
+            {title ? (
+              <S.SectionLayoutTitleContainer>
+                <Text size={4.6} weight={900}>
+                  {title}
                 </Text>
+                {subtitle ? (
+                  <Text size={1.6} weight={300}>
+                    {subtitle}
+                  </Text>
+                ) : (
+                  <></>
+                )}
+              </S.SectionLayoutTitleContainer>
+            ) : (
+              <> </>
+            )}
+            {children ? (
+              <S.SectionLayoutContentContainer>
+                {children}
+              </S.SectionLayoutContentContainer>
+            ) : (
+              <></>
+            )}
+          </>
+        ) : (
+          <>
+            <Container>
+              {title ? (
+                <S.SectionLayoutTitleContainer>
+                  <Text size={4.6} weight={900}>
+                    {title}
+                  </Text>
+                  {subtitle ? (
+                    <Text size={1.6} weight={300}>
+                      {subtitle}
+                    </Text>
+                  ) : (
+                    <></>
+                  )}
+                </S.SectionLayoutTitleContainer>
+              ) : (
+                <> </>
+              )}
+              {children ? (
+                <S.SectionLayoutContentContainer>
+                  {children}
+                </S.SectionLayoutContentContainer>
               ) : (
                 <></>
               )}
-            </S.SectionLayoutTitleContainer>
-          ) : (
-            <> </>
-          )}
-          {children ? (
-            <S.SectionLayoutContentContainer>
-              {children}
-            </S.SectionLayoutContentContainer>
-          ) : (
-            <></>
-          )}
-        </Container>
+            </Container>
+          </>
+        )}
       </S.SectionLayoutContainer>
     </>
   );

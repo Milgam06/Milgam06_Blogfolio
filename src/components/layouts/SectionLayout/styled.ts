@@ -10,7 +10,7 @@ export const SectionLayoutContainer = styled.section<{
   flex: 1;
   padding: 6rem 0;
   background-color: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : "#fff"};
+    props.backgroundColor ? props.backgroundColor : "#fefefe"};
   /* scroll-snap-align: start; */
 `;
 
