@@ -10,6 +10,7 @@ export const TextElement = styled.span<TextProps>`
   -webkit-background-clip: text;
   color: transparent;
   border: none;
+  line-height: 1.2;
   white-space: pre-line;
   text-align: left;
 `;
