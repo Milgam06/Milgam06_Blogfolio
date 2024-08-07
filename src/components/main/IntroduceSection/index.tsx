@@ -5,16 +5,22 @@ import { faAt } from "@fortawesome/free-solid-svg-icons";
 import { SectionLayout, TiltingCard, Text } from "@/components";
 import { INTRODUCE_SECTION_WHOAMI } from "@/constant";
 import { useFadeInScroll } from "@/hooks";
-import { WhoamiImg } from "@/assets";
+import { WhoamiImg, ComputerSVG, KoreaFlagSVG, MilgamSVG } from "@/assets";
 
 import * as S from "./styled";
 
 const IntroduceTextHeader: React.FC = () => {
   return (
     <S.IntroduceContentContainer>
-      <Text size={7} weight={800}>
-        {INTRODUCE_SECTION_WHOAMI.nick}
-      </Text>
+      <S.IntroduceContentTextIconContainer>
+        <Text size={7} weight={800}>
+          {INTRODUCE_SECTION_WHOAMI.nick}
+        </Text>
+        <S.IntroduceIcon
+          src={MilgamSVG}
+          style={{ width: "7rem", height: "7rem" }}
+        />
+      </S.IntroduceContentTextIconContainer>
       <Text size={1.4} weight={300}>
         {INTRODUCE_SECTION_WHOAMI.birth}
       </Text>
@@ -28,12 +34,18 @@ const IntroduceTextMain: React.FC = () => {
       <Text size={2.4} weight={600}>
         {INTRODUCE_SECTION_WHOAMI.name}
       </Text>
-      <Text size={2.4} weight={600}>
-        {INTRODUCE_SECTION_WHOAMI.role}
-      </Text>
-      <Text size={2.4} weight={600}>
-        {INTRODUCE_SECTION_WHOAMI.nationality}
-      </Text>
+      <S.IntroduceContentTextIconContainer>
+        <Text size={2.4} weight={600}>
+          {INTRODUCE_SECTION_WHOAMI.role}
+        </Text>
+        <S.IntroduceIcon src={ComputerSVG} />
+      </S.IntroduceContentTextIconContainer>
+      <S.IntroduceContentTextIconContainer>
+        <Text size={2.4} weight={600}>
+          {INTRODUCE_SECTION_WHOAMI.nationality}
+        </Text>
+        <S.IntroduceIcon src={KoreaFlagSVG} />
+      </S.IntroduceContentTextIconContainer>
     </S.IntroduceContentContainer>
   );
 };
