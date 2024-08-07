@@ -5,8 +5,8 @@ export const IntroduceSectionMyImgWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 26rem;
-  height: 36rem;
+  width: 30rem;
+  height: 40rem;
   perspective: 1000px;
   border-radius: 1rem;
 `;

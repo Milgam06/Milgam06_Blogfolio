@@ -10,8 +10,8 @@ export const TiltingCard: React.FC<TiltingCardProps> = ({ cardImgSrc }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const rotateX = useTransform(y, [remToPx(18), -remToPx(18)], [-25, 25]);
-  const rotateY = useTransform(x, [remToPx(13), -remToPx(13)], [25, -25]);
+  const rotateX = useTransform(y, [remToPx(20), -remToPx(20)], [-29, 29]);
+  const rotateY = useTransform(x, [remToPx(15), -remToPx(15)], [29, -29]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -20,7 +20,6 @@ export const TiltingCard: React.FC<TiltingCardProps> = ({ cardImgSrc }) => {
     const mouseX = e.clientX - (rect.left + offsetWidth / 2);
     const mouseY = e.clientY - (rect.top + offsetHeight / 2);
 
-    console.log(mouseX, mouseY);
     x.set((mouseX / offsetWidth) * remToPx(10));
     y.set((mouseY / offsetHeight) * remToPx(15));
   };
@@ -41,6 +40,7 @@ export const TiltingCard: React.FC<TiltingCardProps> = ({ cardImgSrc }) => {
           filter: "brightness(1.2) contrast(1.2)",
           backgroundPosition: `${+x / 5 + +y / 5}`,
         }}
+        whileTap={{ scale: 1.1 }}
       >
         <S.IntroduceSectionMyImg src={cardImgSrc} alt="Tilting Image" />
       </S.IntroduceSectionMyImgWrapper>
