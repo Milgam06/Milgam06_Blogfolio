@@ -8,14 +8,29 @@ export const IntroduceSectionContainer = styled(motion.div)`
   grid-template-columns: repeat(2, 1fr);
 `;
 
-export const IntroduceSectionMyImgWrapper = styled(motion.div)`
-  width: 300px;
-  height: 500px;
-  perspective: 1000px;
+export const IntroduceSectionTextContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 `;
 
-export const IntroduceSectionMyImg = styled(motion.img)`
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
+export const IntroduceContentContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.2rem;
+`;
+
+export const IntroduceIconContainer = styled.div`
+  display: flex;
+  justify-content: row;
+  align-items: center;
+  gap: 4rem;
+`;
+
+export const IntroduceIconContentContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
 `;
