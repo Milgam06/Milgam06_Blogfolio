@@ -54,8 +54,8 @@ export const AddModal: React.FC = () => {
       } else if (titleValue.length > 14) {
         alert("제목은 14자 이하로 작성해주세요.");
         return;
-      } else if (dropedFiles.length === 0) {
-        alert("이미지를 업로드 해주세요.");
+      } else if (dropedFiles.length < 3 || dropedFiles.length > 6) {
+        alert("이미지는 3개 이상, 6개 이하로 업로드해주세요.");
         return;
       } else {
         await addStory({
