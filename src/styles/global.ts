@@ -22,6 +22,12 @@ export const globalStyle = () => {
         display: none;
       }
     }
+    img {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+    }
 
     html,
     body,
