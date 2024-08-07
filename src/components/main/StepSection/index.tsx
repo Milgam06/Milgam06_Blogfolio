@@ -36,13 +36,13 @@ export const StepSection: React.FC = () => {
         <S.StepSectionContentContainer {...fadeInScroll({ delay: 0.08 })}>
           {stories.map((story) => (
             <Button
-              isLarge={true}
+              isLarge={false}
               onClickHandler={() => onOpenStepModal(story.id)}
             >
               {story.title}
             </Button>
           ))}
-          <Button isLarge={true} onClickHandler={onOpenAddModal}>
+          <Button isLarge={false} onClickHandler={onOpenAddModal}>
             +
           </Button>
         </S.StepSectionContentContainer>

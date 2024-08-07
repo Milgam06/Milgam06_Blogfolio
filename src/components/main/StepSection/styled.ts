@@ -6,7 +6,7 @@ export const StepSectionContentContainer = styled(motion.div)`
   max-height: 70vh;
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   row-gap: 2rem;
   padding: 2rem;
   overflow: auto;
