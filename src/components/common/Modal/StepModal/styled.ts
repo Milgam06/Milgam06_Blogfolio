@@ -27,7 +27,7 @@ export const StepModalContentHeader = styled(SpaceBetweenContainer)`
 
 export const StepModalContentTaskContainer = styled.div`
   width: 100%;
-  max-height: 10rem;
+  height: 8rem;
   display: flex;
   justify-content: space-between;
   align-items: start;
