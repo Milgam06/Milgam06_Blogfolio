@@ -7,6 +7,9 @@ import NewJ6 from "./맥북진스_3 복사본.png";
 import LoadingImg from "./LoadingImg.png";
 import LoadingImg2 from "./LoadingImg2.png";
 import WhoamiImg from "./whoami.png";
+import ComputerSVG from "./Computer.svg";
+import KoreaFlagSVG from "./Korea_Flag.svg";
+import MilgamSVG from "./Tangerine.svg";
 
 export {
   NewJ,
@@ -18,4 +21,7 @@ export {
   LoadingImg,
   LoadingImg2,
   WhoamiImg,
+  ComputerSVG,
+  KoreaFlagSVG,
+  MilgamSVG,
 };
