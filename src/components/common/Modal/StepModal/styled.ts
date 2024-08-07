@@ -22,7 +22,7 @@ export const StepModalContentContainer = styled(SpaceBetweenContainer)`
 export const StepModalContentHeader = styled(SpaceBetweenContainer)`
   width: 100%;
   padding: 1rem 0;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 
 export const StepModalContentTaskContainer = styled.div`
