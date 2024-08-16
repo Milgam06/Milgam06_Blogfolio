@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { CenterContainer, SpaceBetweenContainer } from "@/components/styles";
 
 export const StepModalContainer = styled(CenterContainer)`
-  padding: 2.2rem 2rem;
+  padding: 2rem;
 `;
 
 export const StepModalContentContainer = styled(SpaceBetweenContainer)`
@@ -21,7 +21,6 @@ export const StepModalContentContainer = styled(SpaceBetweenContainer)`
 `;
 export const StepModalContentHeader = styled(SpaceBetweenContainer)`
   width: 100%;
-  padding: 1rem 0;
   /* border: 1px solid red; */
 `;
 
