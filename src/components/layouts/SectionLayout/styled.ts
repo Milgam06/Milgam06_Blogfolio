@@ -8,7 +8,7 @@ export const SectionLayoutContainer = styled.section<{
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  padding: 6rem 0;
+
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "#fefefe"};
   /* scroll-snap-align: start; */
