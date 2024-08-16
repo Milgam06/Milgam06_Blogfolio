@@ -1,5 +1,8 @@
 import DropZone from "react-dropzone";
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 
 import { Text, TextArea, Input } from "@/components";
 import { useStoryStore, useImageStore } from "@/hooks";
@@ -22,6 +25,7 @@ export const AddModal: React.FC = () => {
   const [titleValue, setTitleValue] = useState<string>("");
   const [contentValue, setContentValue] = useState<string>("");
   const [dropedFiles, setDropedFiles] = useState<string[]>([]);
+  const [isHighlight, setIsHighlight] = useState<boolean>(false);
 
   // Handler part
   const onTitleChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,6 +66,7 @@ export const AddModal: React.FC = () => {
           title: titleValue,
           content: contentValue,
           filesUrl: dropedFiles,
+          highlight: isHighlight,
         });
         close();
         console.log("submit");
@@ -74,19 +79,39 @@ export const AddModal: React.FC = () => {
   useEffect(() => {
     console.log(dropedFiles, "dropedFiles");
   }, [dropedFiles]);
+
   return (
     <>
       <S.AddModalContainer>
+        <S.AddModalHeaderContainer>
+          <Text size={1.6} weight={600}>
+            당신만의 경험을 알려주세요!
+          </Text>
+          {isHighlight ? (
+            <FontAwesomeIcon
+              icon={faStar}
+              style={{ width: "1.6rem", height: "1.6rem" }}
+              color="#fbd145"
+              onClick={() => setIsHighlight(!isHighlight)}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={emptyStar}
+              style={{ width: "1.6rem", height: "1.6rem" }}
+              onClick={() => setIsHighlight(!isHighlight)}
+            />
+          )}
+        </S.AddModalHeaderContainer>
         <S.AddModalContentContainer onSubmit={onSubmitHandler}>
-          <Text size={1} weight={600}>
+          <Text size={1} weight={600} color="#626262">
             Step의 이름을 적어주세요.
           </Text>
           <Input value={titleValue} onChange={onTitleChangeHandler} />
-          <Text size={1} weight={600}>
+          <Text size={1} weight={600} color="#626262">
             Step의 세부 내용을 적어주세요.
           </Text>
           <TextArea value={contentValue} onChange={onContentChangeHandler} />
-          <Text size={1} weight={600}>
+          <Text size={1} weight={600} color="#626262">
             Step과 관련된 이미지를 업로드해주세요.
           </Text>
           <DropZone

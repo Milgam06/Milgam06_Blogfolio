@@ -4,7 +4,16 @@ import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 
 export const AddModalContainer = styled(CenterContainer)`
+  flex-direction: column;
+  gap: 1.6rem;
   padding: 2.2rem 2rem;
+`;
+
+export const AddModalHeaderContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const AddModalContentContainer = styled.form`
@@ -13,7 +22,7 @@ export const AddModalContentContainer = styled.form`
   align-items: start;
   flex-direction: column;
   width: 30rem;
-  gap: 1rem;
+  gap: 0.6rem;
 `;
 
 export const AddModalFileUploadContainer = styled(CenterContainer)`
