@@ -8,10 +8,17 @@ import {
   getDoc,
 } from "firebase/firestore/lite";
 
+/**
+ * @param title: title of Step
+ * @param content: content of Step
+ * @param filesUrl: files of Step
+ * @param highlight: isHighlight of Step
+ */
 export interface StoryProps {
   title: string;
   content: string;
   filesUrl: string[];
+  highlight?: boolean;
 }
 
 export interface StoryResponeProps extends StoryProps {
@@ -28,6 +35,7 @@ export const useStoryStore = () => {
           title: doc.data().title,
           content: doc.data().content,
           filesUrl: doc.data().files,
+          highlight: doc.data().highlight,
         })
       );
       console.log(typeof allStoryResult, "allStoryResult");
@@ -50,6 +58,7 @@ export const useStoryStore = () => {
         title: querySnapshot.data()?.title,
         content: querySnapshot.data()?.content,
         filesUrl: querySnapshot.data()?.files,
+        highlight: querySnapshot.data()?.highlight,
       };
       console.log(storyResult, "storyResult");
       return storyResult;
@@ -62,14 +71,21 @@ export const useStoryStore = () => {
    * @param title: title of Step
    * @param content: content of Step
    * @param files: files of Step
+   * @param highlight: isHighlight of Step
    */
-  const addStory = async ({ title, content, filesUrl }: StoryProps) => {
+  const addStory = async ({
+    title,
+    content,
+    filesUrl,
+    highlight = false,
+  }: StoryProps) => {
     try {
       const newStoryID = (await getLastID()) + 1;
       await setDoc(doc(db, "step", String(newStoryID)), {
         title: title,
         content: content,
         files: filesUrl,
+        highlight: highlight,
       });
     } catch (error) {
       console.log("firebaseFuck", error);
@@ -81,5 +97,11 @@ export const useStoryStore = () => {
     return lastStoryID;
   };
 
-  return { getAllStories, getStory, addStory, getLastID };
+  const getHighlightStories = async () => {
+    const storedStories = await getAllStories();
+    const HighlightStories = storedStories.filter((story) => story.highlight);
+    console.log(HighlightStories, "highlight");
+    return HighlightStories;
+  };
+  return { getAllStories, getStory, addStory, getLastID, getHighlightStories };
 };
