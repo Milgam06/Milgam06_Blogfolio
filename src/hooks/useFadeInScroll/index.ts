@@ -7,9 +7,9 @@ export const useFadeInScroll = () => {
    */
   const fadeInScroll = useCallback(({ delay }: { delay: number }) => {
     return {
-      initial: { opacity: 0, transform: "translate3d(0, 30%, 0)" },
+      initial: { opacity: 0, transform: "translate3d(0, 25%, 0)" },
       whileInView: { opacity: 1, transform: "translate3d(0, 0, 0)" },
-      transition: { ease: [0, 0, 0.2, 1], duration: 0.4, delay },
+      transition: { ease: [0, 0, 0.2, 1], duration: 0.6, delay },
       viewport: { once: true },
     } as MotionProps;
   }, []);
