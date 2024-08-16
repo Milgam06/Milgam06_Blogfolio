@@ -17,7 +17,7 @@ export const HighlightSection: React.FC<StoryProps> = ({
   content,
   filesUrl,
 }) => {
-  const [basicColor, setBasicColor] = useState<string>("#fefefe ");
+  const [basicColor, setBasicColor] = useState<string>("#ff9d35 ");
   const { fadeInScroll } = useFadeInScroll();
   const thumbnailImg = filesUrl[1];
 
