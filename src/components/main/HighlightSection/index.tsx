@@ -44,7 +44,7 @@ export const HighlightSection: React.FC<StoryProps> = ({
                     key={i}
                     src={img}
                     alt={`${title}'s images`}
-                    whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 1 }}
                   />
                 ))}
