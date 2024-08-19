@@ -24,8 +24,9 @@ export const AddModal: React.FC = () => {
   // useState part
   const [titleValue, setTitleValue] = useState<string>("");
   const [contentValue, setContentValue] = useState<string>("");
-  const [dropedFiles, setDropedFiles] = useState<string[]>([]);
+  const [dropedFiles, setDropedFiles] = useState<File[]>([]);
   const [isHighlight, setIsHighlight] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Handler part
   const onTitleChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,18 +40,14 @@ export const AddModal: React.FC = () => {
   };
 
   const onDropHandler = async (acceptedFiles: File[]) => {
-    const uploadedFile = await Promise.all(
-      // Promise.all 을 사용하여, acceptedFiles 배열의 모든 파일을 addImages에 props 전달하고 비동기 처리를 통해 반환 값을 return
-      acceptedFiles.map(async (file) => {
-        const fileUrl = await addImages({ uploadedFile: file });
-        return fileUrl;
-      })
+    acceptedFiles.map(async (file) =>
+      setDropedFiles((prev) => [...prev, file])
     );
-    setDropedFiles((prev) => [...prev, ...uploadedFile]);
   };
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       if (titleValue === "" || contentValue === "") {
         alert("모든 항목을 입력해주세요.");
@@ -62,12 +59,19 @@ export const AddModal: React.FC = () => {
         alert("이미지는 3개 이상, 6개 이하로 업로드해주세요.");
         return;
       } else {
+        const fileUrls = await Promise.all(
+          dropedFiles.map(async (file) => {
+            const fileUrl = await addImages({ uploadedFile: file });
+            return fileUrl;
+          })
+        );
         await addStory({
           title: titleValue,
           content: contentValue,
-          filesUrl: dropedFiles,
+          filesUrl: fileUrls,
           highlight: isHighlight,
         });
+        setIsLoading(false);
         close();
         console.log("submit");
       }
