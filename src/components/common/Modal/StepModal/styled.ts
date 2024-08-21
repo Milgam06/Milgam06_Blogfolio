@@ -8,10 +8,9 @@ export const StepModalContainer = styled(CenterContainer)`
 
 export const StepModalContentContainer = styled(SpaceBetweenContainer)`
   flex-direction: column;
-  max-width: 40rem;
-  max-height: 46rem;
-  min-width: 30rem;
-  min-height: 36rem;
+  width: 40rem;
+  max-height: 42rem;
+  min-height: 34rem;
   @media (max-width: 675px) {
     max-width: 30rem;
     max-height: 38rem;
@@ -21,7 +20,6 @@ export const StepModalContentContainer = styled(SpaceBetweenContainer)`
 `;
 export const StepModalContentHeader = styled(SpaceBetweenContainer)`
   width: 100%;
-  /* border: 1px solid red; */
 `;
 
 export const StepModalContentTaskContainer = styled.div`
@@ -42,6 +40,6 @@ export const StepModalContentTaskContainer = styled.div`
 `;
 
 export const StepModalLoadingContainer = styled(CenterContainer)`
-  width: 100%;
-  border: 1px solid red;
+  width: 40rem;
+  height: 34rem;
 `;
