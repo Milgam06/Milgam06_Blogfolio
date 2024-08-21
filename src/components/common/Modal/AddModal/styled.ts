@@ -27,9 +27,28 @@ export const AddModalContentContainer = styled.form`
 
 export const AddModalFileUploadContainer = styled(CenterContainer)`
   width: 100%;
+  height: 8rem;
   border: 1px solid #ccc;
   border-radius: 0.6rem;
-  padding: 2rem 1rem;
+  padding: 0.6rem;
+`;
+
+export const AddModalUploadedImageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  gap: 0.6rem;
+  overflow: auto;
+`;
+
+export const AddModalUploadedImage = styled.img`
+  min-width: 6.8rem;
+  max-width: 10rem;
+  height: 6.8rem;
+  border: 1px solid #ccc;
+  border-radius: 0.6rem;
+  cursor: pointer;
 `;
 
 export const AddModalSubmitButton = styled(motion.button)`

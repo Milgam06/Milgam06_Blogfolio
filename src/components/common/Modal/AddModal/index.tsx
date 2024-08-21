@@ -25,6 +25,7 @@ export const AddModal: React.FC = () => {
   const [titleValue, setTitleValue] = useState<string>("");
   const [contentValue, setContentValue] = useState<string>("");
   const [dropedFiles, setDropedFiles] = useState<File[]>([]);
+  const [dropedFilesImg, setDropedFilesImg] = useState<string[]>([]);
   const [isHighlight, setIsHighlight] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -40,14 +41,28 @@ export const AddModal: React.FC = () => {
   };
 
   const onDropHandler = async (acceptedFiles: File[]) => {
-    acceptedFiles.map(async (file) =>
-      setDropedFiles((prev) => [...prev, file])
+    acceptedFiles.map(async (file) => {
+      setDropedFiles((prev) => [...prev, file]);
+      const filesImg = URL.createObjectURL(file);
+      setDropedFilesImg((prev) => [...prev, filesImg]);
+    });
+
+    console.log(dropedFiles, "dropedFiles");
+  };
+
+  const removeDropedFile = (index: number, e: React.MouseEvent) => {
+    // 함수형을 사용하여, stopPropagation을 사용할 때 이미지가 실시간으로 사라지는게 보이도록 수정
+    setDropedFiles((prev) => prev.filter((i) => i !== dropedFiles[index]));
+    setDropedFilesImg((prev) =>
+      prev.filter((i) => i !== dropedFilesImg[index])
     );
+    e.stopPropagation();
   };
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    console.log("submit");
     try {
       if (titleValue === "" || contentValue === "") {
         alert("모든 항목을 입력해주세요.");
@@ -73,7 +88,6 @@ export const AddModal: React.FC = () => {
         });
         setIsLoading(false);
         close();
-        console.log("submit");
       }
     } catch (error) {
       console.error("error", error);
@@ -81,7 +95,7 @@ export const AddModal: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log(dropedFiles, "dropedFiles");
+    console.log("dropedFiles", dropedFiles);
   }, [dropedFiles]);
 
   return (
@@ -121,15 +135,29 @@ export const AddModal: React.FC = () => {
           <DropZone
             onDrop={onDropHandler}
             accept={{ "image/*": [".jpg", ".jpeg", ".png"] }}
+            noClick={false}
             minSize={1024}
-            maxSize={3272000}
+            maxSize={500000000}
           >
             {({ getRootProps, getInputProps }) => (
               <S.AddModalFileUploadContainer
                 {...getRootProps({ className: "dropzone" })}
               >
                 <input {...getInputProps()} />
-                <p>소중한 경험들의 이미지를 업로드 해주세요!</p>
+                {dropedFiles.length !== 0 ? (
+                  <S.AddModalUploadedImageWrapper>
+                    {dropedFilesImg.map((fileImg, i) => (
+                      <S.AddModalUploadedImage
+                        key={i}
+                        src={fileImg}
+                        alt={fileImg}
+                        onClick={(e) => removeDropedFile(i, e)}
+                      />
+                    ))}
+                  </S.AddModalUploadedImageWrapper>
+                ) : (
+                  <p>소중한 경험들의 이미지를 업로드 해주세요!</p>
+                )}
               </S.AddModalFileUploadContainer>
             )}
           </DropZone>
