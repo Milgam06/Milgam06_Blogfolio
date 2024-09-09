@@ -12,7 +12,11 @@ export const ImageSlider = ({ images }: ImageSliderProps) => {
       <S.ImageSliderWrapper>
         <Tiker duration={20} isPlaying={false}>
           {images.map((image, i) => (
-            <S.ImageSliderContentWrapper key={i} src={image} />
+            <S.ImageSliderContentWrapper
+              key={i}
+              src={image}
+              alt="이미지가 불러와지지 못했어요ㅠㅠ"
+            />
           ))}
         </Tiker>
       </S.ImageSliderWrapper>
