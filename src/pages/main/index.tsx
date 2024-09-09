@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { firebaseConfig } from "@/apis";
+
 import {
   MainSection,
   StepSection,
@@ -22,6 +24,7 @@ export const MainPage: React.FC = () => {
     };
     fetchHighlightStories();
     console.log("fetchHighlightStories", highlightStories);
+    console.log("firebaseConfig", firebaseConfig);
   }, []);
 
   return (
@@ -36,6 +39,7 @@ export const MainPage: React.FC = () => {
               title={stories.title}
               content={stories.content}
               filesUrl={stories.filesUrl}
+              isFirst={i === 1 ? true : false}
             />
           ))
         : null}
