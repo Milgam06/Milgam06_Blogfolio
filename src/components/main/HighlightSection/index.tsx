@@ -7,17 +7,22 @@ import { useFadeInScroll, StoryProps } from "@/hooks";
 import * as S from "./styled";
 import { useEffect } from "react";
 
+export interface HighlightSectionProps extends StoryProps {
+  isFirst: boolean;
+}
+
 /**
  * @param title: highlight section title
  * @param content: highlight section content
  * @param filesUrl: highlight section image url
  */
-export const HighlightSection: React.FC<StoryProps> = ({
+export const HighlightSection: React.FC<HighlightSectionProps> = ({
   title,
   content,
   filesUrl,
+  isFirst,
 }) => {
-  const [basicColor, setBasicColor] = useState<string>("#ff9d35 ");
+  const [basicColor, setBasicColor] = useState<string>("#fefefe  ");
   const { fadeInScroll } = useFadeInScroll();
   const thumbnailImg = filesUrl[1];
 
@@ -34,7 +39,10 @@ export const HighlightSection: React.FC<StoryProps> = ({
     <>
       <SectionLayout fullScreen={true}>
         {!loading ? (
-          <S.HighlightSectionContainer backgroundColor={basicColor}>
+          <S.HighlightSectionContainer
+            backgroundColor={basicColor}
+            isFirst={isFirst}
+          >
             <S.HighlightSectionContentContainer
               {...fadeInScroll({ delay: 0.06 })}
             >

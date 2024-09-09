@@ -3,17 +3,20 @@ import { motion } from "framer-motion";
 
 export interface HighlightSectionContainerProps {
   backgroundColor: string;
+  isFirst: boolean;
 }
 
 export const HighlightSectionContainer = styled.div<HighlightSectionContainerProps>`
   width: 100vw;
   height: 100vh;
-
-  background: linear-gradient(
-    to right,
-    ${(props) => props.backgroundColor},
-    #060606
-  );
+  ${(props) =>
+    props.isFirst
+      ? `background: #0B0B0B;`
+      : `background: linear-gradient(
+    to bottom,
+    ${props.backgroundColor},
+    #0B0B0B 95%
+  );`}
   padding: 6rem;
 `;
 export const HighlightSectionContentContainer = styled(motion.div)`
@@ -21,19 +24,20 @@ export const HighlightSectionContentContainer = styled(motion.div)`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  place-items: center;
 `;
 
 export const HighlightSectionImageBanner = styled(motion.div)`
+  width: 54rem;
   display: flex;
   place-content: center;
   flex-wrap: wrap;
   gap: 1.2rem;
-  /* border: 1px solid red; */
 `;
 
 export const HighlightSectionImage = styled(motion.img)`
-  width: 20rem;
-  height: 12rem;
+  width: 24rem;
+  aspect-ratio: 16/9;
   border: none;
   border-radius: 0.4rem;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
