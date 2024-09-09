@@ -32,7 +32,7 @@ export const StepSection: React.FC = () => {
   };
   return (
     <>
-      <SectionLayout title="Exerience" subtitle="저의 소중한 경험들이에요.">
+      <SectionLayout title="Experience" subtitle="저의 소중한 경험들이에요.">
         <S.StepSectionContentContainer {...fadeInScroll({ delay: 0.08 })}>
           {stories.map((story) => (
             <Button
