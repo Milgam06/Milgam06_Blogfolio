@@ -22,6 +22,11 @@ export const StepModalContentHeader = styled(SpaceBetweenContainer)`
   width: 100%;
 `;
 
+export const StepModalContentHeaderTitle = styled(CenterContainer)`
+  width: fit-content;
+  gap: 1rem;
+`;
+
 export const StepModalContentTaskContainer = styled.div`
   width: 100%;
   height: 8rem;

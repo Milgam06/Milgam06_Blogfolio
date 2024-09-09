@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { Text, ImageSlider } from "@/components";
 import { useModal } from "@/providers";
@@ -50,9 +50,20 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
           ) : (
             <>
               <S.StepModalContentHeader>
-                <Text size={3} weight={600}>
-                  {story.title}
-                </Text>
+                <S.StepModalContentHeaderTitle>
+                  <Text size={3} weight={500}>
+                    {story.title}
+                  </Text>
+                  <FontAwesomeIcon
+                    icon={faTrash}
+                    style={{
+                      width: "1.4rem",
+                      height: "1.4rem",
+                      opacity: 0.4,
+                      cursor: "pointer",
+                    }}
+                  />
+                </S.StepModalContentHeaderTitle>
                 <FontAwesomeIcon
                   icon={faXmark}
                   style={{
