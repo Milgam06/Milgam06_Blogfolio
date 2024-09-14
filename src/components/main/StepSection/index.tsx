@@ -4,11 +4,13 @@ import { SectionLayout, Button, StepModal, AddModal } from "@/components";
 import { useFadeInScroll } from "@/hooks";
 import { useModal } from "@/providers";
 import { useStoryStore, StoryResponeProps } from "@/hooks";
+import { useGlobalStore } from "@/store/useGlobalStore";
 
 import * as S from "./styled";
 
 export const StepSection: React.FC = () => {
   const { getAllStories } = useStoryStore();
+  const { isLogedIn } = useGlobalStore();
   const { open } = useModal();
   const { fadeInScroll } = useFadeInScroll();
   const [stories, setStories] = useState<StoryResponeProps[]>([]);
@@ -42,9 +44,11 @@ export const StepSection: React.FC = () => {
               {story.title}
             </Button>
           ))}
-          <Button isLarge={false} onClickHandler={onOpenAddModal}>
-            +
-          </Button>
+          {isLogedIn && (
+            <Button isLarge={false} onClickHandler={onOpenAddModal}>
+              +
+            </Button>
+          )}
         </S.StepSectionContentContainer>
       </SectionLayout>
     </>
