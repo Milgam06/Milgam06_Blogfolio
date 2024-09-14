@@ -27,7 +27,6 @@ export const AddModal: React.FC = () => {
   const [dropedFiles, setDropedFiles] = useState<File[]>([]);
   const [dropedFilesImg, setDropedFilesImg] = useState<string[]>([]);
   const [isHighlight, setIsHighlight] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Handler part
   const onTitleChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +60,7 @@ export const AddModal: React.FC = () => {
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
+
     console.log("submit");
     try {
       if (titleValue === "" || contentValue === "") {
@@ -86,7 +85,6 @@ export const AddModal: React.FC = () => {
           filesUrl: fileUrls,
           highlight: isHighlight,
         });
-        setIsLoading(false);
         close();
       }
     } catch (error) {

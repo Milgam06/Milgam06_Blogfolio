@@ -1,3 +1,3 @@
-export * from "./DefaultLayout";
+export * from "./defaultLayout";
 export * from "./SectionLayout";
-export * from "./Container";
+export * from "./container";
