@@ -62,7 +62,7 @@ export const AddModal: React.FC = () => {
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    console.log("submit");
+
     try {
       if (titleValue === "" || contentValue === "") {
         alert("모든 항목을 입력해주세요.");
