@@ -1,7 +1,7 @@
 import { Route, Routes, Outlet } from "react-router-dom";
 
 import { DefaultLayout } from "@/components";
-import { MainPage } from "@/pages";
+import { LoginPage, MainPage } from "@/pages";
 
 export const Router: React.FC = () => {
   return (
@@ -17,6 +17,7 @@ export const Router: React.FC = () => {
           }
         >
           <Route path="/" element={<MainPage />} />
+          <Route path="/me" element={<LoginPage />} />
         </Route>
       </Routes>
     </>
