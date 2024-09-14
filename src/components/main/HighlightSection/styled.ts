@@ -50,6 +50,6 @@ export const HighlightSectionTextContainer = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 8rem;
+  padding-left: 4rem;
   gap: 3rem;
 `;
