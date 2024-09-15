@@ -5,47 +5,65 @@ import * as S from "./styled";
 export const MainSection: React.FC = () => {
   return (
     <>
-      {/* <SectionLayout
-        title={
-          <span>
-            제 이름은{" "}
+      <SectionLayout
+        // sectionBackgroundColor="linear-gradient(to bottom right, #ffc971,#52b788)"
+        sectionBackgroundColor="#f0ebd8"
+        fullScreen={true}
+      >
+        <S.MainSectionContentContainer>
+          <S.MainSectionTitleContainer
+            initial={{
+              opacity: 0.2,
+            }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.4, ease: "easeIn", delay: 0 },
+            }}
+          >
             <Text
-              size={6}
+              size={10}
               weight={900}
-              color="linear-gradient(to right, #A871FD,#021AA6)"
+              color="
+            linear-gradient(to right, #748cab, #40916c)
+            "
             >
+              I am
+              <br />
               박여준
             </Text>
-            입니다
-          </span>
-        }
-        subtitle="소통하며 생각하는 개발자"
-      ></SectionLayout> */}
-      <SectionLayout sectionBackgroundColor="#000">
-        <S.MainSectionTitleContainer
-          initial={{
-            opacity: 0.2,
-          }}
-          animate={{
-            opacity: 1,
-            transition: { duration: 0.4, ease: "easeIn", delay: 0 },
-          }}
-        >
-          <Text
-            size={10}
-            weight={900}
-            color="linear-gradient(to right, #cba8ff,#0e2ee2)"
-          >
-            {"{ 박여준 }"}
-          </Text>
-          <Text
-            size={3}
-            weight={700}
-            color="linear-gradient(to right, #0e2ee2,#cba8ff)"
-          >
-            소통하며 생각하는 개발자
-          </Text>
-        </S.MainSectionTitleContainer>
+
+            <Text
+              size={3}
+              weight={700}
+              color="linear-gradient(to right, #40916c, #748cab)"
+              // color="#1d2d44"
+            >
+              소통하며 생각하는 개발자
+            </Text>
+          </S.MainSectionTitleContainer>
+          <S.MainSectionEmojiWrapper>
+            <S.EmojiBgCircle
+            // initial={{
+            //   opacity: 0.2,
+            // }}
+            // animate={{
+            //   opacity: 1,
+            //   transition: { duration: 2 },
+            // }}
+            />
+            <S.MainSectionEmoji
+              src="/MilgamEmo.svg"
+              // initial={{
+              //   opacity: 0,
+              // }}
+              // animate={{
+              //   opacity: 1,
+
+              //   transition: { duration: 0.8 },
+              // }}
+            />
+          </S.MainSectionEmojiWrapper>
+        </S.MainSectionContentContainer>
       </SectionLayout>
     </>
   );

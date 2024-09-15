@@ -99,7 +99,7 @@ export const IntroduceSection: React.FC = () => {
 
   return (
     <>
-      <SectionLayout>
+      <SectionLayout sectionBackgroundColor="linear-gradient(to bottom, #52b788,#b7e4c7)">
         <S.IntroduceSectionContainer {...fadeInScroll({ delay: 0.08 })}>
           <TiltingCard cardImgSrc={WhoamiImg} />
           <S.IntroduceSectionTextContainer>
