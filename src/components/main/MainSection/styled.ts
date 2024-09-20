@@ -28,7 +28,7 @@ export const MainSectionEmojiWrapper = styled.div`
 
 export const MainSectionEmoji = styled(motion.img)`
   position: relative;
-  width: 30rem;
+  width: 26rem;
   bottom: 0;
   z-index: 2;
 `;
@@ -44,5 +44,5 @@ export const EmojiBgCircle = styled(motion.div)`
   border-radius: 50%;
   z-index: 1;
   margin-bottom: 6rem;
-  box-shadow: 0 0 4rem 8rem rgba(255, 254, 249, 0.8);
+  box-shadow: 0 0 4rem 4rem rgba(255, 254, 249, 0.8);
 `;

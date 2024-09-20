@@ -43,24 +43,24 @@ export const MainSection: React.FC = () => {
           </S.MainSectionTitleContainer>
           <S.MainSectionEmojiWrapper>
             <S.EmojiBgCircle
-            // initial={{
-            //   opacity: 0.2,
-            // }}
-            // animate={{
-            //   opacity: 1,
-            //   transition: { duration: 2 },
-            // }}
+              initial={{
+                opacity: 0.2,
+              }}
+              animate={{
+                opacity: 1,
+                transition: { duration: 2 },
+              }}
             />
             <S.MainSectionEmoji
               src="/MilgamEmo.svg"
-              // initial={{
-              //   opacity: 0,
-              // }}
-              // animate={{
-              //   opacity: 1,
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
 
-              //   transition: { duration: 0.8 },
-              // }}
+                transition: { duration: 0.8 },
+              }}
             />
           </S.MainSectionEmojiWrapper>
         </S.MainSectionContentContainer>
