@@ -14,7 +14,7 @@ const IntroduceTextHeader: React.FC = () => {
     <S.IntroduceContentContainer>
       <TitleWrapper>
         <S.IntroduceContentTextIconContainer>
-          <Text size={7} weight={800}>
+          <Text size={7} weight={800} color="#fefefe">
             {INTRODUCE_SECTION_WHOAMI.nick}
           </Text>
 
@@ -37,13 +37,13 @@ const IntroduceTextMain: React.FC = () => {
   return (
     <S.IntroduceContentContainer>
       <TitleWrapper padding="1rem">
-        <Text size={2.4} weight={600}>
+        <Text size={2.4} weight={600} color="#fefefe">
           {INTRODUCE_SECTION_WHOAMI.name}
         </Text>
       </TitleWrapper>
       <TitleWrapper padding="1rem">
         <S.IntroduceContentTextIconContainer>
-          <Text size={2.4} weight={600}>
+          <Text size={2.4} weight={600} color="#fefefe">
             {INTRODUCE_SECTION_WHOAMI.role}
           </Text>
           <S.IntroduceIcon src={ComputerSVG} />
@@ -51,7 +51,7 @@ const IntroduceTextMain: React.FC = () => {
       </TitleWrapper>
       <TitleWrapper padding="1rem">
         <S.IntroduceContentTextIconContainer>
-          <Text size={2.4} weight={600}>
+          <Text size={2.4} weight={600} color="#fefefe">
             {INTRODUCE_SECTION_WHOAMI.nationality}
           </Text>
           <S.IntroduceIcon src={KoreaFlagSVG} />

@@ -35,6 +35,7 @@ export const MainSection: React.FC = () => {
                     transition: { duration: 0.8, delay: 0.8 },
                   },
                 }}
+                color="#fefefe"
               >
                 I am{" "}
                 <Text
@@ -73,6 +74,7 @@ export const MainSection: React.FC = () => {
                     transition: { duration: 0.8, delay: 1 },
                   },
                 }}
+                color="#fefefe"
               >
                 소통하며 생각하는 개발자
               </Text>

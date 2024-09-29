@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Text } from "@/components";
+import { Text, TitleWrapper } from "@/components";
 
 import * as S from "./styled";
 import { Container } from "..";
@@ -35,9 +35,11 @@ export const SectionLayout: React.FC<SectionLayoutProps> = ({
           <>
             {title ? (
               <S.SectionLayoutTitleContainer>
-                <Text size={4.6} weight={900}>
-                  {title}
-                </Text>
+                <TitleWrapper>
+                  <Text size={4.6} weight={900} color="#fefefe">
+                    {title}
+                  </Text>
+                </TitleWrapper>
                 {subtitle ? (
                   <Text size={1.6} weight={300}>
                     {subtitle}
@@ -62,9 +64,11 @@ export const SectionLayout: React.FC<SectionLayoutProps> = ({
             <Container>
               {title ? (
                 <S.SectionLayoutTitleContainer>
-                  <Text size={4.6} weight={900}>
-                    {title}
-                  </Text>
+                  <TitleWrapper>
+                    <Text size={4.6} weight={900} color="#fefefe">
+                      {title}
+                    </Text>
+                  </TitleWrapper>
                   {subtitle ? (
                     <Text size={1.6} weight={300}>
                       {subtitle}
