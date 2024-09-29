@@ -3,11 +3,15 @@ import * as S from "./styled";
 export interface ButtonProps extends S.ButtonStyleProps {
   children: React.ReactNode;
   onClickHandler: () => void;
+  hasImage?: boolean;
+  imgSrc?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   isLarge,
   children,
+  hasImage,
+  imgSrc,
   onClickHandler,
 }) => {
   return (
@@ -21,7 +25,18 @@ export const Button: React.FC<ButtonProps> = ({
         }}
         transition={{ duration: 0.1 }}
       >
-        <S.ButtonContentContainer>{children}</S.ButtonContentContainer>
+        <S.ButtonContentContainer>
+          {hasImage ? (
+            <>
+              <S.ButtonContentImage src={imgSrc} />
+              <S.ButtonContentTextWrapper>
+                {children}
+              </S.ButtonContentTextWrapper>
+            </>
+          ) : (
+            <>{children}</>
+          )}
+        </S.ButtonContentContainer>
       </S.ButtonContainer>
     </>
   );
