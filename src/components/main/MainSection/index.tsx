@@ -36,7 +36,14 @@ export const MainSection: React.FC = () => {
                   },
                 }}
               >
-                I am 박여준
+                I am{" "}
+                <Text
+                  size={10}
+                  weight={900}
+                  color="linear-gradient(to right, #fffcf2,#F29773)"
+                >
+                  MILGAM
+                </Text>
               </Text>
             </TitleWrapper>
             <TitleWrapper
@@ -63,7 +70,7 @@ export const MainSection: React.FC = () => {
                   initial: { opacity: 0 },
                   animate: {
                     opacity: 1,
-                    transition: { duration: 0.8, delay: 0.8 },
+                    transition: { duration: 0.8, delay: 1 },
                   },
                 }}
               >
