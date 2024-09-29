@@ -4,9 +4,8 @@ import { motion } from "framer-motion";
 export const MainSectionContentContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 14rem;
 `;
 
 export const MainSectionTitleContainer = styled(motion.div)`
@@ -15,7 +14,7 @@ export const MainSectionTitleContainer = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 3.2rem;
+  row-gap: 2rem;
 `;
 
 export const MainSectionEmojiWrapper = styled.div`
