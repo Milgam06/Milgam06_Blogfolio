@@ -6,6 +6,7 @@ export interface WhoamiType {
   nationality: string;
   email: string;
   github: string;
+  login: string;
 }
 
 export const INTRODUCE_SECTION_WHOAMI: WhoamiType = {
@@ -16,4 +17,5 @@ export const INTRODUCE_SECTION_WHOAMI: WhoamiType = {
   nationality: "Korean",
   email: "milgamfruit@gmail.com",
   github: "https://github.com/milgam06",
+  login: "/me",
 };

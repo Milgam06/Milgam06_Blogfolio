@@ -9,7 +9,7 @@ export const SectionLayoutContainer = styled.section<{
   justify-content: center;
   flex: 1;
 
-  background-color: ${(props) =>
+  background: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "#fefefe"};
   /* scroll-snap-align: start; */
 `;
@@ -19,7 +19,7 @@ export const SectionLayoutTitleContainer = styled.div`
   align-items: flex-start;
   flex-direction: column;
   row-gap: 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   /* border: 1px solid red; */
 `;
 

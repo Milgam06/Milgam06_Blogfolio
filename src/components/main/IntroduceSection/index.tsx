@@ -1,8 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faAt } from "@fortawesome/free-solid-svg-icons";
 
-import { SectionLayout, TiltingCard, Text } from "@/components";
+import { SectionLayout, TiltingCard, Text, TitleWrapper } from "@/components";
 import { INTRODUCE_SECTION_WHOAMI } from "@/constant";
 import { useFadeInScroll } from "@/hooks";
 import { WhoamiImg, ComputerSVG, KoreaFlagSVG, MilgamSVG } from "@/assets";
@@ -12,40 +13,59 @@ import * as S from "./styled";
 const IntroduceTextHeader: React.FC = () => {
   return (
     <S.IntroduceContentContainer>
-      <S.IntroduceContentTextIconContainer>
-        <Text size={7} weight={800}>
-          {INTRODUCE_SECTION_WHOAMI.nick}
+      <TitleWrapper>
+        <S.IntroduceContentTextIconContainer>
+          <Text size={7} weight={800} color="#fefefe">
+            {INTRODUCE_SECTION_WHOAMI.nick}
+          </Text>
+
+          <S.IntroduceIcon
+            src={MilgamSVG}
+            style={{ width: "7rem", height: "7rem" }}
+          />
+        </S.IntroduceContentTextIconContainer>
+      </TitleWrapper>
+      {/* <TitleWrapper>
+        <Text size={1.4} weight={300}>
+          {INTRODUCE_SECTION_WHOAMI.birth}
         </Text>
-        <S.IntroduceIcon
-          src={MilgamSVG}
-          style={{ width: "7rem", height: "7rem" }}
-        />
-      </S.IntroduceContentTextIconContainer>
-      <Text size={1.4} weight={300}>
-        {INTRODUCE_SECTION_WHOAMI.birth}
-      </Text>
+      </TitleWrapper> */}
     </S.IntroduceContentContainer>
   );
 };
 
 const IntroduceTextMain: React.FC = () => {
+  const navigate = useNavigate();
+  const onMoveLogin = () => {
+    navigate(INTRODUCE_SECTION_WHOAMI.login);
+  };
   return (
     <S.IntroduceContentContainer>
-      <Text size={2.4} weight={600}>
-        {INTRODUCE_SECTION_WHOAMI.name}
-      </Text>
-      <S.IntroduceContentTextIconContainer>
-        <Text size={2.4} weight={600}>
-          {INTRODUCE_SECTION_WHOAMI.role}
+      <TitleWrapper padding="0.6rem 1rem">
+        <Text size={2.4} weight={600} color="#fefefe">
+          {INTRODUCE_SECTION_WHOAMI.name}
         </Text>
-        <S.IntroduceIcon src={ComputerSVG} />
-      </S.IntroduceContentTextIconContainer>
-      <S.IntroduceContentTextIconContainer>
-        <Text size={2.4} weight={600}>
-          {INTRODUCE_SECTION_WHOAMI.nationality}
-        </Text>
-        <S.IntroduceIcon src={KoreaFlagSVG} />
-      </S.IntroduceContentTextIconContainer>
+      </TitleWrapper>
+      <TitleWrapper padding="0.6rem 1rem">
+        <S.IntroduceContentTextIconContainer>
+          <Text size={2.4} weight={600} color="#fefefe">
+            {INTRODUCE_SECTION_WHOAMI.role}
+          </Text>
+          <S.IntroduceIcon
+            src={ComputerSVG}
+            onClick={onMoveLogin}
+            style={{ cursor: "pointer" }}
+          />
+        </S.IntroduceContentTextIconContainer>
+      </TitleWrapper>
+      <TitleWrapper padding="0.6rem 1rem">
+        <S.IntroduceContentTextIconContainer>
+          <Text size={2.4} weight={600} color="#fefefe">
+            {INTRODUCE_SECTION_WHOAMI.nationality}
+          </Text>
+          <S.IntroduceIcon src={KoreaFlagSVG} />
+        </S.IntroduceContentTextIconContainer>
+      </TitleWrapper>
     </S.IntroduceContentContainer>
   );
 };

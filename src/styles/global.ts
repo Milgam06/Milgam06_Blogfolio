@@ -70,7 +70,7 @@ export const globalStyle = () => {
       }
 
       @media screen and (max-width: 500px) {
-        font-size: 12px;
+        font-size: 10px;
       }
     }
   `;
