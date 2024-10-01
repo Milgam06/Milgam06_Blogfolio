@@ -11,14 +11,14 @@ export const MainSection: React.FC = () => {
             <TitleWrapper
               animationProps={{
                 initial: {
-                  opacity: 0.6,
+                  opacity: 0.4,
                   scaleX: 0.2,
                 },
                 animate: {
                   opacity: 1,
                   scaleX: 1,
                   transition: {
-                    duration: 0.6,
+                    duration: 0.5,
                     ease: "easeOut",
                     delay: 0,
                   },
@@ -57,7 +57,7 @@ export const MainSection: React.FC = () => {
                   opacity: 1,
                   scaleX: 1,
                   transition: {
-                    duration: 0.6,
+                    duration: 0.5,
                     ease: "easeOut",
                     delay: 0,
                   },
@@ -71,7 +71,7 @@ export const MainSection: React.FC = () => {
                   initial: { opacity: 0 },
                   animate: {
                     opacity: 1,
-                    transition: { duration: 0.8, delay: 1 },
+                    transition: { duration: 0.8, delay: 0.8 },
                   },
                 }}
                 color="#fefefe"

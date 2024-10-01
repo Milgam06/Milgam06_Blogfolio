@@ -1,13 +1,13 @@
 import * as S from "./styled";
 
-export interface ButtonProps extends S.ButtonStyleProps {
+export interface StepButtonProps extends S.ButtonStyleProps {
   children: React.ReactNode;
   onClickHandler: () => void;
   hasImage?: boolean;
   imgSrc?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const StepButton: React.FC<StepButtonProps> = ({
   isLarge,
   children,
   hasImage,
@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
         onClick={onClickHandler}
         whileHover={{
           scale: 1.08,
-          boxShadow: "0 8px 10px rgba(0, 0, 0, 0.3)",
+          boxShadow: "0 0 10px rgba(0, 0, 0, 0.6)",
         }}
         transition={{ duration: 0.1 }}
       >

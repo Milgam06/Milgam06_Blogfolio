@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faAt } from "@fortawesome/free-solid-svg-icons";
@@ -34,22 +35,30 @@ const IntroduceTextHeader: React.FC = () => {
 };
 
 const IntroduceTextMain: React.FC = () => {
+  const navigate = useNavigate();
+  const onMoveLogin = () => {
+    navigate(INTRODUCE_SECTION_WHOAMI.login);
+  };
   return (
     <S.IntroduceContentContainer>
-      <TitleWrapper padding="1rem">
+      <TitleWrapper padding="0.6rem 1rem">
         <Text size={2.4} weight={600} color="#fefefe">
           {INTRODUCE_SECTION_WHOAMI.name}
         </Text>
       </TitleWrapper>
-      <TitleWrapper padding="1rem">
+      <TitleWrapper padding="0.6rem 1rem">
         <S.IntroduceContentTextIconContainer>
           <Text size={2.4} weight={600} color="#fefefe">
             {INTRODUCE_SECTION_WHOAMI.role}
           </Text>
-          <S.IntroduceIcon src={ComputerSVG} />
+          <S.IntroduceIcon
+            src={ComputerSVG}
+            onClick={onMoveLogin}
+            style={{ cursor: "pointer" }}
+          />
         </S.IntroduceContentTextIconContainer>
       </TitleWrapper>
-      <TitleWrapper padding="1rem">
+      <TitleWrapper padding="0.6rem 1rem">
         <S.IntroduceContentTextIconContainer>
           <Text size={2.4} weight={600} color="#fefefe">
             {INTRODUCE_SECTION_WHOAMI.nationality}

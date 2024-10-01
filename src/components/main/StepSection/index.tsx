@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 
-import { SectionLayout, Button, StepModal, AddModal, Text } from "@/components";
+import {
+  SectionLayout,
+  StepButton,
+  StepModal,
+  AddModal,
+  Text,
+} from "@/components";
 import { useFadeInScroll } from "@/hooks";
 import { useModal } from "@/providers";
 import { useStoryStore, StoryResponeProps } from "@/hooks";
@@ -37,7 +43,7 @@ export const StepSection: React.FC = () => {
       <SectionLayout title="Experience" subtitle="저의 소중한 경험들이에요.">
         <S.StepSectionContentContainer {...fadeInScroll({ delay: 0.08 })}>
           {stories.map((story) => (
-            <Button
+            <StepButton
               isLarge={true}
               hasImage={true}
               imgSrc={story.filesUrl[0]}
@@ -46,12 +52,12 @@ export const StepSection: React.FC = () => {
               <Text size={1.4} weight={100}>
                 {story.title}
               </Text>
-            </Button>
+            </StepButton>
           ))}
           {isLogedIn && (
-            <Button isLarge={false} onClickHandler={onOpenAddModal}>
+            <StepButton isLarge={false} onClickHandler={onOpenAddModal}>
               +
-            </Button>
+            </StepButton>
           )}
         </S.StepSectionContentContainer>
       </SectionLayout>

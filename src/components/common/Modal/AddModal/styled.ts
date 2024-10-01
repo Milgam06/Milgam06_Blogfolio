@@ -40,6 +40,9 @@ export const AddModalUploadedImageWrapper = styled.div`
   width: 100%;
   gap: 0.6rem;
   overflow: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const AddModalUploadedImage = styled.img`

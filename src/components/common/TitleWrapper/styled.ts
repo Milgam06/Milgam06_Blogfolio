@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 export interface TitleWrapperElementStyleProps {
   padding?: string;
+  backgroundColor?: string;
 }
 
 export const TitleWrapperElement = styled(
@@ -13,7 +14,7 @@ export const TitleWrapperElement = styled(
   justify-content: center;
   align-items: center;
   padding: ${({ padding }) => padding || "1rem 2rem"};
-  background-color: #000;
+  background-color: ${({ backgroundColor }) => backgroundColor || "#000"};
   border-radius: 1rem;
   overflow: hidden;
 `;
