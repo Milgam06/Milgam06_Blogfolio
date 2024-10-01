@@ -5,6 +5,7 @@ import { faXmark, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Text, ImageSlider } from "@/components";
 import { useModal } from "@/providers";
 import { useStoryStore, StoryResponeProps } from "@/hooks";
+import { useGlobalStore } from "@/store/useGlobalStore";
 
 import * as S from "./styled";
 
@@ -13,8 +14,9 @@ export interface StepModalProps {
 }
 
 export const StepModal: React.FC<StepModalProps> = ({ id }) => {
+  const { isLogedIn } = useGlobalStore();
   const { close } = useModal();
-  const { getStory } = useStoryStore();
+  const { getStory, removeStory } = useStoryStore();
 
   const [loading, setLoading] = useState<boolean>(true);
   const [story, setStory] = useState<StoryResponeProps>({
@@ -23,6 +25,11 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
     content: "",
     filesUrl: [],
   });
+
+  const onRemove = async () => {
+    await removeStory(id);
+    close();
+  };
 
   useEffect(() => {
     const fetchStory = async () => {
@@ -54,15 +61,18 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
                   <Text size={3} weight={500}>
                     {story.title}
                   </Text>
-                  <FontAwesomeIcon
-                    icon={faTrash}
-                    style={{
-                      width: "1.4rem",
-                      height: "1.4rem",
-                      opacity: 0.4,
-                      cursor: "pointer",
-                    }}
-                  />
+                  {isLogedIn && (
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      style={{
+                        width: "1.4rem",
+                        height: "1.4rem",
+                        opacity: 0.4,
+                        cursor: "pointer",
+                      }}
+                      onClick={onRemove}
+                    />
+                  )}
                 </S.StepModalContentHeaderTitle>
                 <FontAwesomeIcon
                   icon={faXmark}

@@ -6,6 +6,7 @@ import {
   collection,
   setDoc,
   getDoc,
+  deleteDoc,
 } from "firebase/firestore/lite";
 
 /**
@@ -91,6 +92,18 @@ export const useStoryStore = () => {
       console.log("firebaseFuck", error);
     }
   };
+
+  /**
+   * @param id: id of step
+   */
+  const removeStory = async (id: string) => {
+    try {
+      await deleteDoc(doc(db, "step", id));
+    } catch (error) {
+      console.error("firebaseFuck", error);
+    }
+  };
+
   const getLastID = async () => {
     const lastStory = (await getAllStories())?.slice(-1)[0];
     const lastStoryID = lastStory ? Number(lastStory.id) : 0;
@@ -103,5 +116,13 @@ export const useStoryStore = () => {
     console.log(HighlightStories, "highlight");
     return HighlightStories;
   };
-  return { getAllStories, getStory, addStory, getLastID, getHighlightStories };
+
+  return {
+    getAllStories,
+    getStory,
+    addStory,
+    removeStory,
+    getLastID,
+    getHighlightStories,
+  };
 };
