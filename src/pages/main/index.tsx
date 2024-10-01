@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 
-import { firebaseConfig } from "@/apis";
-
 import {
   MainSection,
   StepSection,
