@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { firebaseConfig } from "@/apis";
 
@@ -8,12 +8,22 @@ import {
   HighlightSection,
   IntroduceSection,
 } from "@/components";
-import { StoryProps, useStoryStore } from "@/hooks";
-import { useEffect } from "react";
+import { StoryProps, useStoryStore, useLogin } from "@/hooks";
 
 export const MainPage: React.FC = () => {
   const [highlightStories, setHighlightStories] = useState<StoryProps[]>([]);
+  const { handleValidateUser } = useLogin();
   const { getHighlightStories } = useStoryStore();
+  const getSessionData = () => {
+    const sessionData = sessionStorage.getItem(
+      `firebase:authUser:${import.meta.env.VITE_FIREBASE_API_KEY}:[DEFAULT]`
+    );
+    if (sessionData) {
+      const loginData = JSON.parse(sessionData);
+      return loginData.uid;
+    }
+    return;
+  };
   useEffect(() => {
     const fetchHighlightStories = async () => {
       const storedHighlightStories = await getHighlightStories();
@@ -23,8 +33,15 @@ export const MainPage: React.FC = () => {
       }
     };
     fetchHighlightStories();
-    console.log("fetchHighlightStories", highlightStories);
-    console.log("firebaseConfig", firebaseConfig);
+
+    try {
+      const loginSession = getSessionData();
+      if (loginSession) {
+        handleValidateUser(loginSession);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }, []);
 
   return (
