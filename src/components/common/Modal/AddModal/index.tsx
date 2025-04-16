@@ -1,14 +1,14 @@
-import DropZone from "react-dropzone";
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
+import DropZone from 'react-dropzone';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 
-import { Text, TextArea, Input } from "@/components";
-import { useStoryStore, useImageStore } from "@/hooks";
+import { Text, TextArea, Input } from '@/components';
+import { useStoryStore, useImageStore } from '@/hooks';
 
-import * as S from "./styled";
-import { useModal } from "@/providers";
+import * as S from './styled';
+import { useModal } from '@/providers';
 
 export interface DropedFilesProps {
   url: string;
@@ -22,20 +22,19 @@ export const AddModal: React.FC = () => {
   const { addImages } = useImageStore();
 
   // useState part
-  const [titleValue, setTitleValue] = useState<string>("");
-  const [contentValue, setContentValue] = useState<string>("");
+  const [titleValue, setTitleValue] = useState<string>('');
+  const [contentValue, setContentValue] = useState<string>('');
   const [dropedFiles, setDropedFiles] = useState<File[]>([]);
   const [dropedFilesImg, setDropedFilesImg] = useState<string[]>([]);
   const [isHighlight, setIsHighlight] = useState<boolean>(false);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(false);
 
   // Handler part
   const onTitleChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitleValue(e.target.value);
   };
 
-  const onContentChangeHandler = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  const onContentChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContentValue(e.target.value);
   };
 
@@ -45,32 +44,26 @@ export const AddModal: React.FC = () => {
       const filesImg = URL.createObjectURL(file);
       setDropedFilesImg((prev) => [...prev, filesImg]);
     });
-
-    console.log(dropedFiles, "dropedFiles");
   };
 
   const removeDropedFile = (index: number, e: React.MouseEvent) => {
     // 함수형을 사용하여, stopPropagation을 사용할 때 이미지가 실시간으로 사라지는게 보이도록 수정
     setDropedFiles((prev) => prev.filter((i) => i !== dropedFiles[index]));
-    setDropedFilesImg((prev) =>
-      prev.filter((i) => i !== dropedFilesImg[index])
-    );
+    setDropedFilesImg((prev) => prev.filter((i) => i !== dropedFilesImg[index]));
     e.stopPropagation();
   };
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    console.log("submit");
     try {
-      if (titleValue === "" || contentValue === "") {
-        alert("모든 항목을 입력해주세요.");
+      if (titleValue === '' || contentValue === '') {
+        alert('모든 항목을 입력해주세요.');
         return;
       } else if (titleValue.length > 14) {
-        alert("제목은 14자 이하로 작성해주세요.");
+        alert('제목은 14자 이하로 작성해주세요.');
         return;
       } else if (dropedFiles.length < 3 || dropedFiles.length > 6) {
-        alert("이미지는 3개 이상, 6개 이하로 업로드해주세요.");
+        alert('이미지는 3개 이상, 6개 이하로 업로드해주세요.');
         return;
       } else {
         const fileUrls = await Promise.all(
@@ -79,6 +72,7 @@ export const AddModal: React.FC = () => {
             return fileUrl;
           })
         );
+        setIsSubmitDisabled(true);
         await addStory({
           title: titleValue,
           content: contentValue,
@@ -86,15 +80,12 @@ export const AddModal: React.FC = () => {
           highlight: isHighlight,
         });
         close();
+        setIsSubmitDisabled(false);
       }
     } catch (error) {
-      console.error("error", error);
+      console.error('error', error);
     }
   };
-
-  useEffect(() => {
-    console.log("dropedFiles", dropedFiles);
-  }, [dropedFiles]);
 
   return (
     <>
@@ -106,14 +97,14 @@ export const AddModal: React.FC = () => {
           {isHighlight ? (
             <FontAwesomeIcon
               icon={faStar}
-              style={{ width: "1.6rem", height: "1.6rem" }}
+              style={{ width: '1.6rem', height: '1.6rem' }}
               color="#fbd145"
               onClick={() => setIsHighlight(!isHighlight)}
             />
           ) : (
             <FontAwesomeIcon
               icon={emptyStar}
-              style={{ width: "1.6rem", height: "1.6rem" }}
+              style={{ width: '1.6rem', height: '1.6rem' }}
               onClick={() => setIsHighlight(!isHighlight)}
             />
           )}
@@ -132,15 +123,12 @@ export const AddModal: React.FC = () => {
           </Text>
           <DropZone
             onDrop={onDropHandler}
-            accept={{ "image/*": [".jpg", ".jpeg", ".png"] }}
+            accept={{ 'image/*': ['.jpg', '.jpeg', '.png'] }}
             noClick={false}
             minSize={1024}
-            maxSize={500000000}
-          >
+            maxSize={500000000}>
             {({ getRootProps, getInputProps }) => (
-              <S.AddModalFileUploadContainer
-                {...getRootProps({ className: "dropzone" })}
-              >
+              <S.AddModalFileUploadContainer {...getRootProps({ className: 'dropzone' })}>
                 <input {...getInputProps()} />
                 {dropedFiles.length !== 0 ? (
                   <S.AddModalUploadedImageWrapper>
@@ -159,7 +147,7 @@ export const AddModal: React.FC = () => {
               </S.AddModalFileUploadContainer>
             )}
           </DropZone>
-          <S.AddModalSubmitButton onClick={() => onSubmitHandler} type="submit">
+          <S.AddModalSubmitButton disabled={isSubmitDisabled} onClick={() => onSubmitHandler} type="submit">
             <Text size={1.2} weight={600} color="#fff">
               제출하기
             </Text>

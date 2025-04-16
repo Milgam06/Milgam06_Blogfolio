@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { Text, ImageSlider } from "@/components";
-import { useModal } from "@/providers";
-import { useStoryStore, StoryResponeProps } from "@/hooks";
-import { useGlobalStore } from "@/store/useGlobalStore";
+import { Text, ImageSlider } from '@/components';
+import { useModal } from '@/providers';
+import { useStoryStore, StoryResponeProps } from '@/hooks';
+import { useGlobalStore } from '@/store/useGlobalStore';
 
-import * as S from "./styled";
+import * as S from './styled';
 
 export interface StepModalProps {
   id: string;
@@ -20,9 +20,9 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
 
   const [loading, setLoading] = useState<boolean>(true);
   const [story, setStory] = useState<StoryResponeProps>({
-    id: "",
-    title: "",
-    content: "",
+    id: '',
+    title: '',
+    content: '',
     filesUrl: [],
   });
 
@@ -40,7 +40,7 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
       setLoading(false);
     };
     fetchStory();
-  }, [id]);
+  }, [getStory, id]);
 
   return (
     <>
@@ -65,10 +65,10 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
                     <FontAwesomeIcon
                       icon={faTrash}
                       style={{
-                        width: "1.4rem",
-                        height: "1.4rem",
+                        width: '1.4rem',
+                        height: '1.4rem',
                         opacity: 0.4,
-                        cursor: "pointer",
+                        cursor: 'pointer',
                       }}
                       onClick={onRemove}
                     />
@@ -77,10 +77,10 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
                 <FontAwesomeIcon
                   icon={faXmark}
                   style={{
-                    width: "1.4rem",
-                    height: "1.4rem",
+                    width: '1.4rem',
+                    height: '1.4rem',
                     opacity: 0.4,
-                    cursor: "pointer",
+                    cursor: 'pointer',
                   }}
                   onClick={close}
                 />
