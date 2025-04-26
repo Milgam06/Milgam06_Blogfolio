@@ -1,6 +1,6 @@
-import { SectionLayout, Text, TitleWrapper } from "@/components";
+import { SectionLayout, Text, TitleWrapper } from '@/components';
 
-import * as S from "./styled";
+import * as S from './styled';
 
 export const MainSection: React.FC = () => {
   return (
@@ -19,12 +19,11 @@ export const MainSection: React.FC = () => {
                   scaleX: 1,
                   transition: {
                     duration: 0.5,
-                    ease: "easeOut",
+                    ease: 'easeOut',
                     delay: 0,
                   },
                 },
-              }}
-            >
+              }}>
               <Text
                 size={10}
                 weight={900}
@@ -35,14 +34,9 @@ export const MainSection: React.FC = () => {
                     transition: { duration: 0.8, delay: 0.8 },
                   },
                 }}
-                color="#fefefe"
-              >
-                I am{" "}
-                <Text
-                  size={10}
-                  weight={900}
-                  color="linear-gradient(to right, #fffcf2,#F29773)"
-                >
+                color="#fefefe">
+                I am{' '}
+                <Text size={10} weight={900} color="linear-gradient(to right, #fffcf2,#F29773)">
                   MILGAM
                 </Text>
               </Text>
@@ -58,12 +52,11 @@ export const MainSection: React.FC = () => {
                   scaleX: 1,
                   transition: {
                     duration: 0.5,
-                    ease: "easeOut",
+                    ease: 'easeOut',
                     delay: 0,
                   },
                 },
-              }}
-            >
+              }}>
               <Text
                 size={3}
                 weight={700}
@@ -74,8 +67,7 @@ export const MainSection: React.FC = () => {
                     transition: { duration: 0.8, delay: 0.8 },
                   },
                 }}
-                color="#fefefe"
-              >
+                color="#fefefe">
                 소통하며 생각하는 개발자
               </Text>
             </TitleWrapper>

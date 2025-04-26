@@ -16,6 +16,8 @@
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mantine/core": "^7.17.4",
+    "@mantine/hooks": "^7.17.4",
     "@types/node": "^20.16.5",
     "color-thief-react": "^2.1.0",
     "firebase": "^10.13.1",

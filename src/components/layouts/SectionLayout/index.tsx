@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { Text, TitleWrapper } from "@/components";
+import { Text, TitleWrapper } from '@/components';
 
-import * as S from "./styled";
-import { Container } from "..";
+import * as S from './styled';
+import { Container } from '..';
 
 export interface SectionLayoutProps {
   title?: string | React.ReactNode;
@@ -51,13 +51,7 @@ export const SectionLayout: React.FC<SectionLayoutProps> = ({
             ) : (
               <> </>
             )}
-            {children ? (
-              <S.SectionLayoutContentContainer>
-                {children}
-              </S.SectionLayoutContentContainer>
-            ) : (
-              <></>
-            )}
+            {children ? <S.SectionLayoutContentContainer>{children}</S.SectionLayoutContentContainer> : <></>}
           </>
         ) : (
           <>
@@ -80,13 +74,7 @@ export const SectionLayout: React.FC<SectionLayoutProps> = ({
               ) : (
                 <> </>
               )}
-              {children ? (
-                <S.SectionLayoutContentContainer>
-                  {children}
-                </S.SectionLayoutContentContainer>
-              ) : (
-                <></>
-              )}
+              {children ? <S.SectionLayoutContentContainer>{children}</S.SectionLayoutContentContainer> : <></>}
             </Container>
           </>
         )}
