@@ -30,7 +30,6 @@ export const Header: React.FC = memo(() => {
 
   useDidUpdate(() => {
     setContentType({ contentType: segmentItem });
-    console.log('contentType', segmentItem);
   }, [segmentItem]);
 
   return (
