@@ -34,7 +34,19 @@ export const Header: React.FC = memo(() => {
   }, [segmentItem]);
 
   return (
-    <Flex w="100%" justify="center" align="center" pos="absolute" p={0} top={0} style={{ zIndex: 100 }}>
+    <Flex
+      w="100%"
+      justify="center"
+      align="center"
+      pos="absolute"
+      p={0}
+      top={0}
+      bg="#ffffff"
+      styles={{
+        root: {
+          zIndex: 100,
+        },
+      }}>
       <Flex w={1200} justify="space-between" align="center" px="xl" py="xs">
         <Image src={LogoText_SuperSmall} p={0} />
         <SegmentedControl
@@ -55,7 +67,6 @@ export const Header: React.FC = memo(() => {
               padding: '8px 14px',
             },
             indicator: {
-              fontSize: 200,
               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
             },
             innerLabel: {
