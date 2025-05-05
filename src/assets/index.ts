@@ -11,6 +11,8 @@ import WhoamiSquareImg from './whoami_square.svg';
 import ComputerSVG from './Computer.svg';
 import KoreaFlagSVG from './Korea_Flag.svg';
 import MilgamSVG from './Tangerine.svg';
+import LogoText_ExtraSmall from './LogoText_ExtraSmall.svg';
+import LogoText_SuperSmall from './LogoText_SuperSmall.svg';
 
 export {
   NewJ,
@@ -26,4 +28,6 @@ export {
   ComputerSVG,
   KoreaFlagSVG,
   MilgamSVG,
+  LogoText_ExtraSmall,
+  LogoText_SuperSmall,
 };

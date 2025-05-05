@@ -14,9 +14,13 @@ export const globalStyle = () => {
     }
 
     html {
-      font-size: 14px;
+      font-size: 10px;
       width: 100%;
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       cursor: default;
       -ms-overflow-style: none;
       ::-webkit-scrollbar {
