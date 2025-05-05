@@ -46,7 +46,7 @@ export const MainSection: React.FC = () => {
   }, []);
   return (
     <>
-      <BaseLayout isFullWith={true} justify="center" align="center">
+      <BaseLayout isFullWidth={true} justify="center" align="center">
         <Stack w="100%" justify="center" align="center" gap="xl" pt={40}>
           <Stack justify="center" align="flex-start" gap="lg" px="xl" py="md">
             <Stack
