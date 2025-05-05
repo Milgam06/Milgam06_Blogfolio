@@ -1,100 +1,137 @@
-import { SectionLayout, Text, TitleWrapper } from '@/components';
+import { useCallback, useMemo } from 'react';
+import { MotionProps } from 'framer-motion';
+import { Stack, Divider } from '@mantine/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faAt, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { TypeAnimation } from 'react-type-animation';
 
-import * as S from './styled';
+import { BaseLayout, Text, TiltingCard } from '@/components';
+import { WhoamiSquareImg } from '@/assets';
+import { MAIN_SECTION_ROLE_SEQUENCE } from '@/constant';
 
 export const MainSection: React.FC = () => {
+  const handleClickLinkedIn = useCallback(() => {
+    const linkedInUrl = 'https://www.linkedin.com/in/%EC%97%AC%EC%A4%80-%EB%B0%95-104377303/';
+    window.open(linkedInUrl, '_blank');
+  }, []);
+
+  const handleClickEmail = useCallback(() => {
+    const emailUrl = 'mailto:milgamfruit@gmail.com';
+    window.open(emailUrl, '_blank');
+  }, []);
+
+  const handleClickPhone = useCallback(() => {
+    const phoneUrl = 'tel:010-8838-1914';
+    window.open(phoneUrl, '_blank');
+  }, []);
+
+  const fadeInAnimation: MotionProps = useMemo(() => {
+    const animation: MotionProps = {
+      initial: {
+        opacity: 0,
+        scale: 0.9,
+      },
+      animate: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+          duration: 0.4,
+          ease: 'easeOut',
+          delay: 0.4,
+        },
+      },
+    };
+    return animation;
+  }, []);
   return (
     <>
-      <SectionLayout sectionBackgroundColor="#fefefe" fullScreen={true}>
-        <S.MainSectionContentContainer>
-          <S.MainSectionTitleContainer>
-            <TitleWrapper
-              animationProps={{
-                initial: {
-                  opacity: 0.4,
-                  scaleX: 0.2,
-                },
-                animate: {
-                  opacity: 1,
-                  scaleX: 1,
-                  transition: {
-                    duration: 0.5,
-                    ease: 'easeOut',
-                    delay: 0,
-                  },
+      <BaseLayout isFullWidth={true} justify="center" align="center">
+        <Stack w="100%" justify="center" align="center" gap="xl" pt={40}>
+          <Stack justify="center" align="flex-start" gap="lg" px="xl" py="md">
+            <Stack
+              justify="center"
+              align="center"
+              gap="xl"
+              styles={{
+                root: {
+                  flexDirection: 'row',
                 },
               }}>
-              <Text
-                size={10}
-                weight={900}
-                animationProps={{
-                  initial: { opacity: 0 },
-                  animate: {
-                    opacity: 1,
-                    transition: { duration: 0.8, delay: 0.8 },
-                  },
-                }}
-                color="#fefefe">
-                I am{' '}
-                <Text size={10} weight={900} color="linear-gradient(to right, #fffcf2,#F29773)">
-                  MILGAM
-                </Text>
+              <Text size={10} weight={700} animationProps={fadeInAnimation}>
+                Hi, I'm
               </Text>
-            </TitleWrapper>
-            <TitleWrapper
-              animationProps={{
-                initial: {
-                  opacity: 0.6,
-                  scaleX: 0.4,
-                },
-                animate: {
-                  opacity: 1,
-                  scaleX: 1,
-                  transition: {
-                    duration: 0.5,
-                    ease: 'easeOut',
-                    delay: 0,
-                  },
+              <TiltingCard cardImgSrc={WhoamiSquareImg} animationProps={fadeInAnimation} />
+              <Text size={10} weight={700} animationProps={fadeInAnimation}>
+                Yeojun!
+              </Text>
+            </Stack>
+            <TypeAnimation
+              sequence={MAIN_SECTION_ROLE_SEQUENCE}
+              repeat={Infinity}
+              preRenderFirstString
+              speed={20}
+              deletionSpeed={50}
+              style={{
+                fontSize: '5rem',
+                fontWeight: 100,
+                color: '#4AF626',
+              }}
+            />
+          </Stack>
+          <Divider w="100%" size="sm" color="#000" />
+          <Stack w="100%" justify="center" align="flex-start" gap="lg" px={80} py="xl">
+            <Stack
+              justify="center"
+              align="center"
+              gap="lg"
+              onClick={handleClickLinkedIn}
+              styles={{
+                root: {
+                  flexDirection: 'row',
+                  cursor: 'pointer',
                 },
               }}>
-              <Text
-                size={3}
-                weight={700}
-                animationProps={{
-                  initial: { opacity: 0 },
-                  animate: {
-                    opacity: 1,
-                    transition: { duration: 0.8, delay: 0.8 },
-                  },
-                }}
-                color="#fefefe">
-                소통하며 생각하는 개발자
+              <FontAwesomeIcon size="3x" icon={faLinkedin} color="#7e7e7e" />
+              <Text size={2.8} weight={700} color="#7e7e7e">
+                박여준
               </Text>
-            </TitleWrapper>
-          </S.MainSectionTitleContainer>
-          {/* <S.MainSectionEmojiWrapper>
-            <S.EmojiBgCircle
-              initial={{
-                opacity: 0.2,
-              }}
-              animate={{
-                opacity: 1,
-                transition: { duration: 2 },
-              }}
-            />
-            <S.MainSectionEmoji
-              src="/MilgamEmo.svg"
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-                transition: { duration: 0.8 },
-              }}
-            />
-          </S.MainSectionEmojiWrapper> */}
-        </S.MainSectionContentContainer>
-      </SectionLayout>
+            </Stack>
+            <Stack
+              justify="center"
+              align="center"
+              gap="lg"
+              onClick={handleClickEmail}
+              styles={{
+                root: {
+                  flexDirection: 'row',
+                  cursor: 'pointer',
+                },
+              }}>
+              <FontAwesomeIcon size="3x" icon={faAt} color="#7e7e7e" />
+              <Text size={2.8} weight={600} color="#7e7e7e">
+                Milgamfruit
+              </Text>
+            </Stack>
+            <Stack
+              justify="center"
+              align="center"
+              gap="lg"
+              onClick={handleClickPhone}
+              styles={{
+                root: {
+                  flexDirection: 'row',
+                  cursor: 'pointer',
+                },
+              }}>
+              <FontAwesomeIcon size="3x" icon={faPhone} color="#7e7e7e" />
+              <Text size={2.8} weight={600} color="#7e7e7e">
+                010-8838-1914
+              </Text>
+            </Stack>
+          </Stack>
+        </Stack>
+      </BaseLayout>
     </>
   );
 };
