@@ -1,11 +1,13 @@
-import { useMotionValue, useTransform } from "framer-motion";
+import { MotionProps, useMotionValue, useTransform } from 'framer-motion';
 
-import * as S from "./styled";
+import * as S from './styled';
+import { Image } from '@mantine/core';
 
 export interface TiltingCardProps {
   cardImgSrc: string;
+  animationProps?: MotionProps;
 }
-export const TiltingCard: React.FC<TiltingCardProps> = ({ cardImgSrc }) => {
+export const TiltingCard: React.FC<TiltingCardProps> = ({ animationProps, cardImgSrc }) => {
   const remToPx = (rem: number) => rem * 14;
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -36,13 +38,23 @@ export const TiltingCard: React.FC<TiltingCardProps> = ({ cardImgSrc }) => {
         style={{ rotateX, rotateY }}
         whileHover={{
           scale: 1.2,
-          boxShadow: "0 50px 30px rgba(0, 0, 0, 0.2)",
-          filter: "brightness(1.2) contrast(1.2)",
+          boxShadow: '0 50px 30px rgba(0, 0, 0, 0.2)',
+          filter: 'brightness(1.2) contrast(1.2)',
           backgroundPosition: `${+x / 5 + +y / 5}`,
         }}
         whileTap={{ scale: 1.1 }}
-      >
-        <S.IntroduceSectionMyImg src={cardImgSrc} alt="Tilting Image" />
+        {...animationProps}>
+        <Image
+          w="100%"
+          h="100%"
+          radius="xl"
+          styles={{
+            root: {
+              transformStyle: 'preserve-3d',
+            },
+          }}
+          src={cardImgSrc}
+        />
       </S.IntroduceSectionMyImgWrapper>
     </>
   );

@@ -1,5 +1,6 @@
-import { css } from "@emotion/react";
-import { reset } from "./reset";
+import { css } from '@emotion/react';
+import '@fontsource/inter';
+import { reset } from './reset';
 
 export const globalStyle = () => {
   return css`
@@ -41,7 +42,7 @@ export const globalStyle = () => {
     #app,
     #root,
     #__next {
-      font-family: "Spoqa Han Sans Neo", "sans-serif";
+      font-family: 'Inter', sans-serif;
       font-weight: 300;
       font-style: normal;
       letter-spacing: -0.03rem;
