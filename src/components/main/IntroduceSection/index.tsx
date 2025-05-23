@@ -11,7 +11,6 @@ interface ITimelineItemProps {
   title: string;
   turnaroundTime: string;
   description: string;
-  isNextInactive?: boolean;
   icon: React.ReactNode;
 }
 
@@ -38,42 +37,6 @@ export const IntroduceSection: React.FC = () => {
       turnaroundTime: '2024.12 ~ 2025.04',
       description: '인턴쉽 경험',
       icon: <FontAwesomeIcon icon={faBuilding} />,
-    },
-    {
-      title: '"MyCertification" Project',
-      turnaroundTime: '2025.05 ~ ',
-      description: '개인 프로젝트 진행 중',
-      icon: <FontAwesomeIcon icon={faHammer} />,
-    },
-    {
-      title: '"MyCertification" Project',
-      turnaroundTime: '2025.05 ~ ',
-      description: '개인 프로젝트 진행 중',
-      icon: <FontAwesomeIcon icon={faHammer} />,
-    },
-    {
-      title: '"MyCertification" Project',
-      turnaroundTime: '2025.05 ~ ',
-      description: '개인 프로젝트 진행 중',
-      icon: <FontAwesomeIcon icon={faHammer} />,
-    },
-    {
-      title: '"MyCertification" Project',
-      turnaroundTime: '2025.05 ~ ',
-      description: '개인 프로젝트 진행 중',
-      icon: <FontAwesomeIcon icon={faHammer} />,
-    },
-    {
-      title: '"MyCertification" Project',
-      turnaroundTime: '2025.05 ~ ',
-      description: '개인 프로젝트 진행 중',
-      icon: <FontAwesomeIcon icon={faHammer} />,
-    },
-    {
-      title: '"MyCertification" Project',
-      turnaroundTime: '2025.05 ~ ',
-      description: '개인 프로젝트 진행 중',
-      icon: <FontAwesomeIcon icon={faHammer} />,
     },
     {
       title: '"MyCertification" Project',
