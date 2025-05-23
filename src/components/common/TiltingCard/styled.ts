@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { motion } from 'framer-motion';
 
 export const IntroduceSectionMyImgWrapper = styled(motion.div)`
@@ -7,6 +8,7 @@ export const IntroduceSectionMyImgWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1000px;
+  perspective: 600px;
   border-radius: 2rem;
+  overflow: hidden;
 `;

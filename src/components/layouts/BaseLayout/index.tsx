@@ -1,17 +1,29 @@
-import { Flex } from '@mantine/core';
+import { Flex, FlexProps } from '@mantine/core';
+
 import { memo, ReactNode } from 'react';
 
-interface ICenterLayoutProps {
-  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
-  align?: 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'stretch';
-  direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
+interface IBaseLayoutProps {
+  justify?: FlexProps['justify'];
+  align?: FlexProps['align'];
+  direction?: FlexProps['direction'];
+  gap?: FlexProps['gap'];
   isFullWidth?: boolean;
+  styles?: FlexProps['styles'];
   style?: React.CSSProperties;
   children: ReactNode;
 }
 
-export const BaseLayout: React.FC<ICenterLayoutProps> = memo(
-  ({ justify = 'flex-start', align = 'flex-start', direction = 'column', isFullWidth = false, style, children }) => {
+export const BaseLayout: React.FC<IBaseLayoutProps> = memo(
+  ({
+    justify = 'flex-start',
+    align = 'flex-start',
+    direction = 'column',
+    gap,
+    isFullWidth = false,
+    styles,
+    style,
+    children,
+  }) => {
     const maxWidth = isFullWidth ? '100%' : 1200;
 
     return (
@@ -23,6 +35,8 @@ export const BaseLayout: React.FC<ICenterLayoutProps> = memo(
           align={align}
           direction={direction}
           bg="transparent"
+          gap={gap}
+          styles={styles}
           style={style}>
           {children}
         </Flex>

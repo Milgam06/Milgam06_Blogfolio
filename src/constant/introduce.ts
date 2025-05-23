@@ -12,7 +12,7 @@ export interface WhoamiType {
 export const INTRODUCE_SECTION_WHOAMI: WhoamiType = {
   nick: 'Milgam',
   birth: '2006.8.6 ~ ',
-  name: 'Park-Yeojun',
+  name: 'YEOJUN',
   role: 'Frontend Developer',
   nationality: 'Korean',
   email: 'milgamfruit@gmail.com',

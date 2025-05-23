@@ -1,134 +1,112 @@
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faAt } from "@fortawesome/free-solid-svg-icons";
+import { useMemo } from 'react';
+import { Stack, Timeline, TimelineItem, TimelineItemProps } from '@mantine/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSchool, faBuilding, faHammer } from '@fortawesome/free-solid-svg-icons';
 
-import { SectionLayout, TiltingCard, Text, TitleWrapper } from "@/components";
-import { INTRODUCE_SECTION_WHOAMI } from "@/constant";
-import { useFadeInScroll } from "@/hooks";
-import { WhoamiImg, ComputerSVG, KoreaFlagSVG, MilgamSVG } from "@/assets";
+import { TiltingCard, Text, BaseLayout } from '@/components';
+import { INTRODUCE_SECTION_WHOAMI } from '@/constant';
+import { WhoamiPlacardImg } from '@/assets';
 
-import * as S from "./styled";
-
-const IntroduceTextHeader: React.FC = () => {
-  return (
-    <S.IntroduceContentContainer>
-      <TitleWrapper>
-        <S.IntroduceContentTextIconContainer>
-          <Text size={7} weight={800} color="#fefefe">
-            {INTRODUCE_SECTION_WHOAMI.nick}
-          </Text>
-
-          <S.IntroduceIcon
-            src={MilgamSVG}
-            style={{ width: "7rem", height: "7rem" }}
-          />
-        </S.IntroduceContentTextIconContainer>
-      </TitleWrapper>
-      {/* <TitleWrapper>
-        <Text size={1.4} weight={300}>
-          {INTRODUCE_SECTION_WHOAMI.birth}
-        </Text>
-      </TitleWrapper> */}
-    </S.IntroduceContentContainer>
-  );
-};
-
-const IntroduceTextMain: React.FC = () => {
-  const navigate = useNavigate();
-  const onMoveLogin = () => {
-    navigate(INTRODUCE_SECTION_WHOAMI.login);
-  };
-  return (
-    <S.IntroduceContentContainer>
-      <TitleWrapper padding="0.6rem 1rem">
-        <Text size={2.4} weight={600} color="#fefefe">
-          {INTRODUCE_SECTION_WHOAMI.name}
-        </Text>
-      </TitleWrapper>
-      <TitleWrapper padding="0.6rem 1rem">
-        <S.IntroduceContentTextIconContainer>
-          <Text size={2.4} weight={600} color="#fefefe">
-            {INTRODUCE_SECTION_WHOAMI.role}
-          </Text>
-          <S.IntroduceIcon
-            src={ComputerSVG}
-            onClick={onMoveLogin}
-            style={{ cursor: "pointer" }}
-          />
-        </S.IntroduceContentTextIconContainer>
-      </TitleWrapper>
-      <TitleWrapper padding="0.6rem 1rem">
-        <S.IntroduceContentTextIconContainer>
-          <Text size={2.4} weight={600} color="#fefefe">
-            {INTRODUCE_SECTION_WHOAMI.nationality}
-          </Text>
-          <S.IntroduceIcon src={KoreaFlagSVG} />
-        </S.IntroduceContentTextIconContainer>
-      </TitleWrapper>
-    </S.IntroduceContentContainer>
-  );
-};
-
-const IntroduceTextFooter: React.FC = () => {
-  const onMoveGithub = () => {
-    window.open(INTRODUCE_SECTION_WHOAMI.github, "_blank");
-  };
-  const onMoveEmail = () => {
-    window.open(`mailto:${INTRODUCE_SECTION_WHOAMI.email}`);
-  };
-  return (
-    <S.IntroduceIconContainer>
-      <S.IntroduceIconContentContainer>
-        <FontAwesomeIcon
-          icon={faGithub}
-          style={{
-            width: "4rem",
-            height: "4rem",
-            opacity: 1,
-            cursor: "pointer",
-          }}
-          onClick={onMoveGithub}
-        />
-        {/* <Text size={1.4} weight={600} onClick={onMoveGithub}>
-          GITHUB
-        </Text> */}
-      </S.IntroduceIconContentContainer>
-
-      <S.IntroduceIconContentContainer>
-        <FontAwesomeIcon
-          icon={faAt}
-          style={{
-            width: "4rem",
-            height: "4rem",
-            opacity: 1,
-            cursor: "pointer",
-          }}
-          onClick={onMoveEmail}
-        />
-        {/* <Text size={1.4} weight={600} onClick={onMoveEmail}>
-          EMAIL
-        </Text> */}
-      </S.IntroduceIconContentContainer>
-    </S.IntroduceIconContainer>
-  );
-};
+interface ITimelineItemProps {
+  title: string;
+  turnaroundTime: string;
+  description: string;
+  icon: React.ReactNode;
+}
 
 export const IntroduceSection: React.FC = () => {
-  const { fadeInScroll } = useFadeInScroll();
+  const { nick, name } = useMemo(() => {
+    return INTRODUCE_SECTION_WHOAMI;
+  }, []);
+
+  const timelineItems: ITimelineItemProps[] = [
+    {
+      title: 'HighSchool',
+      turnaroundTime: '2022.03 ~ 2025.02',
+      description: '고등학교 재학 중',
+      icon: <FontAwesomeIcon icon={faSchool} />,
+    },
+    {
+      title: 'Mecher.INC',
+      turnaroundTime: '2024.08 ~ 2024.10',
+      description: '인턴쉽 경험',
+      icon: <FontAwesomeIcon icon={faBuilding} />,
+    },
+    {
+      title: 'SilviaHealth.INC',
+      turnaroundTime: '2024.12 ~ 2025.04',
+      description: '인턴쉽 경험',
+      icon: <FontAwesomeIcon icon={faBuilding} />,
+    },
+    {
+      title: '"MyCertification" Project',
+      turnaroundTime: '2025.05 ~ ',
+      description: '개인 프로젝트 진행 중',
+      icon: <FontAwesomeIcon icon={faHammer} />,
+    },
+  ];
+
+  const timelineActiveIndex = useMemo(() => {
+    const lastActiveItemIndex = timelineItems.length - 2;
+    return lastActiveItemIndex;
+  }, [timelineItems.length]);
 
   return (
     <>
-      <SectionLayout>
-        <S.IntroduceSectionContainer {...fadeInScroll({ delay: 0.08 })}>
-          <TiltingCard cardImgSrc={WhoamiImg} />
-          <S.IntroduceSectionTextContainer>
-            <IntroduceTextHeader />
-            <IntroduceTextMain />
-            <IntroduceTextFooter />
-          </S.IntroduceSectionTextContainer>
-        </S.IntroduceSectionContainer>
-      </SectionLayout>
+      <BaseLayout
+        isFullWidth
+        justify="space-between"
+        align="center"
+        direction={{ base: 'column', sm: 'row' }}
+        gap="20%">
+        <Stack w="100%">
+          <TiltingCard onlyImage={false} title={name} description={nick} cardImgSrc={WhoamiPlacardImg} />
+        </Stack>
+        <Stack w="100%" align="flex-start" justify="center" gap="xl">
+          <Text size={6} weight={800}>
+            Time-line
+          </Text>
+          <Timeline
+            mah={400}
+            bulletSize={48}
+            lineWidth={6}
+            active={timelineActiveIndex}
+            px={80}
+            styles={{
+              root: {
+                overflow: 'auto',
+              },
+            }}>
+            {timelineItems.map((item, index) => {
+              const isNextInactiveItem = index === timelineItems.length - 2;
+              const lineVariant: TimelineItemProps['lineVariant'] = isNextInactiveItem ? 'dashed' : 'solid';
+
+              return (
+                <TimelineItem
+                  key={index}
+                  lineVariant={lineVariant}
+                  title={
+                    <Text size={2.4} weight={900}>
+                      {item.title}
+                    </Text>
+                  }
+                  bullet={item.icon}
+                  p={0}
+                  px="xs">
+                  <Stack justify="center" align="flex-start" gap="xs">
+                    <Text size={1} weight={400} color="#c6c6c6">
+                      {item.turnaroundTime}
+                    </Text>
+                    <Text size={1.4} weight={400}>
+                      {item.description}
+                    </Text>
+                  </Stack>
+                </TimelineItem>
+              );
+            })}
+          </Timeline>
+        </Stack>
+      </BaseLayout>
     </>
   );
 };
