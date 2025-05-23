@@ -108,7 +108,6 @@ export const IntroduceSection: React.FC = () => {
             Time-line
           </Text>
           <Timeline
-            ref={timelineComponentRef}
             mah={400}
             bulletSize={48}
             lineWidth={6}
@@ -121,13 +120,11 @@ export const IntroduceSection: React.FC = () => {
             }}>
             {timelineItems.map((item, index) => {
               const isNextInactiveItem = index === timelineItems.length - 2;
-              const isLastItem = index === timelineItems.length - 1;
               const lineVariant: TimelineItemProps['lineVariant'] = isNextInactiveItem ? 'dashed' : 'solid';
-              const scrollRef = isLastItem ? timelineScrollRef : undefined;
+
               return (
                 <TimelineItem
                   key={index}
-                  ref={scrollRef}
                   lineVariant={lineVariant}
                   title={
                     <Text size={2.4} weight={900}>
