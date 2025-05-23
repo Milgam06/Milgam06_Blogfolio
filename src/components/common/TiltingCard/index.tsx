@@ -1,19 +1,30 @@
 import { MotionProps, useMotionValue, useTransform } from 'framer-motion';
+import { Image, Stack } from '@mantine/core';
 
+import { Text } from '../Text';
 import * as S from './styled';
-import { Image } from '@mantine/core';
 
 export interface TiltingCardProps {
   cardImgSrc: string;
+  onlyImage?: boolean;
+  title?: string;
+  description?: string;
   animationProps?: MotionProps;
 }
-export const TiltingCard: React.FC<TiltingCardProps> = ({ animationProps, cardImgSrc }) => {
-  const remToPx = (rem: number) => rem * 14;
+
+export const TiltingCard: React.FC<TiltingCardProps> = ({
+  cardImgSrc,
+  onlyImage = true,
+  title,
+  description,
+  animationProps,
+}) => {
+  const remToPx = (rem: number) => rem * 10;
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const rotateX = useTransform(y, [remToPx(20), -remToPx(20)], [-29, 29]);
-  const rotateY = useTransform(x, [remToPx(15), -remToPx(15)], [29, -29]);
+  const rotateX = useTransform(y, [remToPx(20), -remToPx(20)], [-30, 30]);
+  const rotateY = useTransform(x, [remToPx(15), -remToPx(15)], [30, -30]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -44,17 +55,37 @@ export const TiltingCard: React.FC<TiltingCardProps> = ({ animationProps, cardIm
         }}
         whileTap={{ scale: 1.1 }}
         {...animationProps}>
-        <Image
-          w="100%"
-          h="100%"
-          radius="xl"
-          styles={{
-            root: {
-              transformStyle: 'preserve-3d',
-            },
-          }}
-          src={cardImgSrc}
-        />
+        {onlyImage ? (
+          <Image
+            src={cardImgSrc}
+            styles={{
+              root: {
+                transformStyle: 'preserve-3d',
+              },
+            }}
+          />
+        ) : (
+          <Stack w="100%" align="center" justify="center" gap="md" py="lg" px="md">
+            <Image
+              src={cardImgSrc}
+              w="100%"
+              radius="xl"
+              styles={{
+                root: {
+                  transformStyle: 'preserve-3d',
+                },
+              }}
+            />
+            <Stack w="100%" align="flex-start" justify="center" gap="10%" px="sm">
+              <Text size={2.4} weight={900}>
+                {title}
+              </Text>
+              <Text size={1.6} weight={400}>
+                {description}
+              </Text>
+            </Stack>
+          </Stack>
+        )}
       </S.IntroduceSectionMyImgWrapper>
     </>
   );
