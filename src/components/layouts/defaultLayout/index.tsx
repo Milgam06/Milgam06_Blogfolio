@@ -7,7 +7,7 @@ export interface DefaultLayoutProps {
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   return (
     <>
-      <Box w="100%" h="100%" bg="#FFFCF9" style={{ overflow: 'auto' }}>
+      <Box w="100%" h="100%" bg="#fff" style={{ overflow: 'auto' }}>
         {children}
       </Box>
     </>
