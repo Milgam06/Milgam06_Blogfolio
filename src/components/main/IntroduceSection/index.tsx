@@ -2,8 +2,6 @@ import { useMemo } from 'react';
 import { Stack, Timeline, TimelineItem, TimelineItemProps } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSchool, faBuilding, faHammer } from '@fortawesome/free-solid-svg-icons';
-import { useDidMount, useDidUpdate } from 'rooks';
-import { useInView } from 'framer-motion';
 
 import { TiltingCard, Text, BaseLayout } from '@/components';
 import { INTRODUCE_SECTION_WHOAMI } from '@/constant';
@@ -18,7 +16,7 @@ interface ITimelineItemProps {
 }
 
 export const IntroduceSection: React.FC = () => {
-  const { nick, name, login, email, github, birth } = useMemo(() => {
+  const { nick, name } = useMemo(() => {
     return INTRODUCE_SECTION_WHOAMI;
   }, []);
 
