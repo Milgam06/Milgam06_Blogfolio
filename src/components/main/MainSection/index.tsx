@@ -46,7 +46,7 @@ export const MainSection: React.FC = () => {
   }, []);
   return (
     <>
-      <BaseLayout isFullWidth={true} justify="center" align="center">
+      <BaseLayout isFullWidth justify="center" align="center">
         <Stack w="100%" justify="center" align="center" gap="xl" pt={40}>
           <Stack justify="center" align="flex-start" gap="lg" px="xl" py="md">
             <Stack
@@ -69,7 +69,6 @@ export const MainSection: React.FC = () => {
             <TypeAnimation
               sequence={MAIN_SECTION_ROLE_SEQUENCE}
               repeat={Infinity}
-              preRenderFirstString
               speed={20}
               deletionSpeed={50}
               style={{
