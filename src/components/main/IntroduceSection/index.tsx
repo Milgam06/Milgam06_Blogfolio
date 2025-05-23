@@ -97,13 +97,11 @@ export const IntroduceSection: React.FC = () => {
         justify="space-between"
         align="center"
         direction={{ base: 'column', sm: 'row' }}
-        style={{ border: '1px solid red' }}
         gap="20%">
-        <Stack w="100%" bd="1px solid red">
+        <Stack w="100%">
           <TiltingCard onlyImage={false} title={name} description={nick} cardImgSrc={WhoamiPlacardImg} />
         </Stack>
-
-        <Stack w="100%" align="flex-start" justify="center" bd={'1px solid red'} gap="xl">
+        <Stack w="100%" align="flex-start" justify="center" gap="xl">
           <Text size={6} weight={800}>
             Time-line
           </Text>
