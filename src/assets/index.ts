@@ -9,6 +9,7 @@ import LoadingImg2 from './LoadingImg2.png';
 import WhoamiImg from './whoami.png';
 import WhoamiSquareImg from './whoami_square.svg';
 import WhoamiPlacardImg from './whoami_placard.png';
+import WhoamiIntroduceImg from './whoami_introduce.png';
 import ComputerSVG from './Computer.svg';
 import KoreaFlagSVG from './Korea_Flag.svg';
 import MilgamSVG from './Tangerine.svg';
@@ -27,6 +28,7 @@ export {
   WhoamiImg,
   WhoamiSquareImg,
   WhoamiPlacardImg,
+  WhoamiIntroduceImg,
   ComputerSVG,
   KoreaFlagSVG,
   MilgamSVG,
