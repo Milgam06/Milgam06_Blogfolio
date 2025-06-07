@@ -35,8 +35,8 @@ export const Timeline: React.FC<ITimelineProps> = memo(({ timelineItems, isLastD
       }}>
       {timelineItems.map((item, index) => {
         const isNextInactiveItem = index === timelineItems.length - 2;
-        const isLastDahsed = isLastDashedActive && isNextInactiveItem;
-        const lineVariant: TimelineItemProps['lineVariant'] = isLastDahsed ? 'dashed' : 'solid';
+        const isLastDashedItem = isLastDashedActive && isNextInactiveItem;
+        const lineVariant: TimelineItemProps['lineVariant'] = isLastDashedItem ? 'dashed' : 'solid';
 
         return (
           <TimelineItem
