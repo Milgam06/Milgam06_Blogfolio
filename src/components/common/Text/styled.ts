@@ -13,5 +13,5 @@ export const TextElement = styled(motion.span)<TextProps>`
   border: none;
   line-height: 1.2;
   white-space: pre-line;
-  text-align: center;
+  text-align: ${(props) => props.textAlign || 'left'};
 `;

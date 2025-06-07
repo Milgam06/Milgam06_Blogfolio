@@ -1,24 +1,15 @@
 import { MotionProps, useMotionValue, useTransform } from 'framer-motion';
-import { Image, Stack } from '@mantine/core';
+import { Image } from '@mantine/core';
 
-import { Text } from '../Text';
 import * as S from './styled';
 
 export interface TiltingCardProps {
   cardImgSrc: string;
-  onlyImage?: boolean;
-  title?: string;
-  description?: string;
   animationProps?: MotionProps;
+  onClick?: () => void;
 }
 
-export const TiltingCard: React.FC<TiltingCardProps> = ({
-  cardImgSrc,
-  onlyImage = true,
-  title,
-  description,
-  animationProps,
-}) => {
+export const TiltingCard: React.FC<TiltingCardProps> = ({ cardImgSrc, animationProps, onClick }) => {
   const remToPx = (rem: number) => rem * 10;
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -49,43 +40,21 @@ export const TiltingCard: React.FC<TiltingCardProps> = ({
         style={{ rotateX, rotateY }}
         whileHover={{
           scale: 1.2,
-          boxShadow: '0 50px 30px rgba(0, 0, 0, 0.2)',
-          filter: 'brightness(1.2) contrast(1.2)',
           backgroundPosition: `${+x / 5 + +y / 5}`,
+          boxShadow: '0 50px 30px rgba(0, 0, 0, 0.2)',
+          filter: 'brightness(1.1) contrast(1.1)',
         }}
         whileTap={{ scale: 1.1 }}
+        onClick={onClick}
         {...animationProps}>
-        {onlyImage ? (
-          <Image
-            src={cardImgSrc}
-            styles={{
-              root: {
-                transformStyle: 'preserve-3d',
-              },
-            }}
-          />
-        ) : (
-          <Stack w="100%" align="center" justify="center" gap="md" py="lg" px="md">
-            <Image
-              src={cardImgSrc}
-              w="100%"
-              radius="xl"
-              styles={{
-                root: {
-                  transformStyle: 'preserve-3d',
-                },
-              }}
-            />
-            <Stack w="100%" align="flex-start" justify="center" gap="10%" px="sm">
-              <Text size={2.4} weight={900}>
-                {title}
-              </Text>
-              <Text size={1.6} weight={400}>
-                {description}
-              </Text>
-            </Stack>
-          </Stack>
-        )}
+        <Image
+          src={cardImgSrc}
+          styles={{
+            root: {
+              transformStyle: 'preserve-3d',
+            },
+          }}
+        />
       </S.IntroduceSectionMyImgWrapper>
     </>
   );

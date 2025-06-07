@@ -24,7 +24,7 @@ export const BaseLayout: React.FC<IBaseLayoutProps> = memo(
     style,
     children,
   }) => {
-    const maxWidth = isFullWidth ? '100%' : 1200;
+    const maxWidth = isFullWidth ? '100vw' : 1200;
 
     return (
       <Flex w="100%" h="100%" bg="transparent" justify="center" align="center">
