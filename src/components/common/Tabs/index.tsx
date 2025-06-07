@@ -12,6 +12,8 @@ interface ITabsProps {
   tabsItems: ITabsItemProps[];
   inverted?: boolean;
   listGrow?: TabsListProps['grow'];
+  width?: TabsProps['w'];
+  height?: TabsProps['h'];
   justify?: TabsListProps['justify'];
   orientation?: TabsProps['orientation'];
   placement?: TabsProps['placement'];
@@ -28,6 +30,8 @@ export const Tabs: React.FC<ITabsProps> = memo(
     tabsItems,
     inverted,
     listGrow,
+    width,
+    height,
     justify,
     orientation,
     placement,
@@ -37,6 +41,14 @@ export const Tabs: React.FC<ITabsProps> = memo(
     tabsTabStyles,
     onChange,
   }) => {
+    const tabsWidth = useMemo(() => {
+      return width || 640;
+    }, [width]);
+
+    const tabsHeight = useMemo(() => {
+      return height || 600;
+    }, [height]);
+
     const tabsPanel = useMemo(() => {
       return (
         <>
@@ -69,8 +81,8 @@ export const Tabs: React.FC<ITabsProps> = memo(
 
     return (
       <MantineTabs
-        w={640}
-        h={600}
+        w={tabsWidth}
+        h={tabsHeight}
         color="#ff8c42"
         p={0}
         defaultValue={defaultValue}

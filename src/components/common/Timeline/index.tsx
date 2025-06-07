@@ -40,7 +40,7 @@ export const Timeline: React.FC<ITimelineProps> = memo(({ timelineItems, isLastD
 
         return (
           <TimelineItem
-            key={index}
+            key={item.title}
             lineVariant={lineVariant}
             title={
               <Text size={2.4} weight={900}>
