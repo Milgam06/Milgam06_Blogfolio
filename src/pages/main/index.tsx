@@ -1,21 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import {
-  MainSection,
-  StepSection,
-  HighlightSection,
-  IntroduceSection,
-} from "@/components";
-import { StoryProps, useStoryStore, useLogin } from "@/hooks";
+import { MainSection, StepSection, HighlightSection, IntroduceSection } from '@/components';
+import { StoryProps, useStoryStore, useLogin } from '@/hooks';
 
 export const MainPage: React.FC = () => {
   const [highlightStories, setHighlightStories] = useState<StoryProps[]>([]);
   const { handleValidateUser } = useLogin();
   const { getHighlightStories } = useStoryStore();
   const getSessionData = () => {
-    const sessionData = sessionStorage.getItem(
-      `firebase:authUser:${import.meta.env.VITE_FIREBASE_API_KEY}:[DEFAULT]`
-    );
+    const sessionData = sessionStorage.getItem(`firebase:authUser:${import.meta.env.VITE_FIREBASE_API_KEY}:[DEFAULT]`);
     if (sessionData) {
       const loginData = JSON.parse(sessionData);
       return loginData.uid;

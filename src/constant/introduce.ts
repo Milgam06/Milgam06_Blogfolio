@@ -1,3 +1,5 @@
+import { ITimelineItemProps } from '@/components';
+
 export enum ETechStack {
   LANGUAGE = 'language',
   FRONTEND = 'frontend',
@@ -17,8 +19,12 @@ interface ITechStack {
   [ETechStack.TOOL]: string[];
   [ETechStack.STYLE]: string[];
 }
+export interface IAboutMeType {
+  title: string[];
+  descriptions: string[];
+}
 
-export interface WhoamiType {
+export interface IWhoamiType {
   nick: string;
   name: string;
   birth: string;
@@ -26,12 +32,12 @@ export interface WhoamiType {
   nationality: string;
   email: string;
   github: string;
-  description: string;
+  aboutMe: IAboutMeType;
   techstack: ITechStack;
   login: string;
 }
 
-export const INTRODUCE_SECTION_WHOAMI: WhoamiType = {
+export const INTRODUCE_SECTION_WHOAMI: IWhoamiType = {
   nick: 'Milgam',
   birth: '2006.8.6 ~ ',
   name: 'YEOJUN',
@@ -67,8 +73,15 @@ export const INTRODUCE_SECTION_WHOAMI: WhoamiType = {
       'adobe-premiere',
     ],
   },
-  description:
-    '안녕하세요, 저는 프론트엔드와 백엔드를 모두 다룰 수 있는 풀스택 개발자입니다. 다양한 기술 스택을 활용하여 웹 애플리케이션을 개발하고 있습니다.',
+  aboutMe: {
+    title: ['FULL-STACK 개발자 박여준 입니다!'],
+    descriptions: [
+      '효율적이고 확장 가능한 서비스를 지향합니다!',
+      '신선한 아이디어라면, 어디서든 도전합니다!',
+      '개발을 통해 세상을 더 나은 곳으로 만들고 싶습니다.',
+      '항상 배우고 성장하는 것을 즐깁니다.',
+    ],
+  },
   login: '/me',
 };
 

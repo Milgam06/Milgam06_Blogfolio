@@ -41,7 +41,7 @@ export const Tabs: React.FC<ITabsProps> = memo(
       return (
         <>
           {tabsItems.map((item) => (
-            <MantineTabs.Panel key={item.tabsValue} value={item.tabsValue} p="xs" styles={tabsPanelStyles}>
+            <MantineTabs.Panel key={item.tabsValue} value={item.tabsValue} p="md" styles={tabsPanelStyles}>
               {item.tabsItem}
             </MantineTabs.Panel>
           ))}
@@ -69,6 +69,10 @@ export const Tabs: React.FC<ITabsProps> = memo(
 
     return (
       <MantineTabs
+        w={640}
+        h={600}
+        color="#ff8c42"
+        p={0}
         defaultValue={defaultValue}
         inverted={inverted}
         orientation={orientation}

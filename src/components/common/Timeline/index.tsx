@@ -12,13 +12,14 @@ export interface ITimelineItemProps {
 
 interface ITimelineProps {
   timelineItems: ITimelineItemProps[];
+  isLastDashedActive?: boolean;
 }
 
-export const Timeline: React.FC<ITimelineProps> = memo(({ timelineItems }) => {
+export const Timeline: React.FC<ITimelineProps> = memo(({ timelineItems, isLastDashedActive }) => {
   const timelineActiveIndex = useMemo(() => {
-    const lastActiveItemIndex = timelineItems.length - 2;
+    const lastActiveItemIndex = isLastDashedActive ? timelineItems.length - 2 : timelineItems.length - 1;
     return lastActiveItemIndex;
-  }, [timelineItems.length]);
+  }, [isLastDashedActive, timelineItems.length]);
 
   return (
     <MantineTimeline
@@ -34,7 +35,8 @@ export const Timeline: React.FC<ITimelineProps> = memo(({ timelineItems }) => {
       }}>
       {timelineItems.map((item, index) => {
         const isNextInactiveItem = index === timelineItems.length - 2;
-        const lineVariant: TimelineItemProps['lineVariant'] = isNextInactiveItem ? 'dashed' : 'solid';
+        const isLastDahsed = isLastDashedActive && isNextInactiveItem;
+        const lineVariant: TimelineItemProps['lineVariant'] = isLastDahsed ? 'dashed' : 'solid';
 
         return (
           <TimelineItem
