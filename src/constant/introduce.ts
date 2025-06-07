@@ -1,5 +1,3 @@
-import { ITimelineItemProps } from '@/components';
-
 export enum ETechStack {
   LANGUAGE = 'language',
   FRONTEND = 'frontend',
