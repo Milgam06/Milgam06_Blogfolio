@@ -3,17 +3,17 @@ import { useEffect, useState } from 'react';
 import { SectionLayout, StepButton, StepModal, AddModal, Text } from '@/components';
 import { useFadeInScroll } from '@/hooks';
 import { useModal } from '@/providers';
-import { useStoryStore, StoryResponeProps } from '@/hooks';
+import { useStoryStore, StoryResponseProps } from '@/hooks';
 import { useGlobalStore } from '@/store/useGlobalStore';
 
 import * as S from './styled';
 
 export const StepSection: React.FC = () => {
   const { getAllStories } = useStoryStore();
-  const { isLogedIn } = useGlobalStore();
+  const { isLoggedIn } = useGlobalStore();
   const { open } = useModal();
   const { fadeInScroll } = useFadeInScroll();
-  const [stories, setStories] = useState<StoryResponeProps[]>([]);
+  const [stories, setStories] = useState<StoryResponseProps[]>([]);
 
   useEffect(() => {
     const fetchStories = async () => {
@@ -46,7 +46,7 @@ export const StepSection: React.FC = () => {
               </Text>
             </StepButton>
           ))}
-          {isLogedIn && (
+          {isLoggedIn && (
             <StepButton isLarge={false} onClickHandler={onOpenAddModal}>
               +
             </StepButton>

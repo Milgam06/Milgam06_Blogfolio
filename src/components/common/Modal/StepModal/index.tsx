@@ -4,7 +4,7 @@ import { faXmark, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { Text, ImageSlider } from '@/components';
 import { useModal } from '@/providers';
-import { useStoryStore, StoryResponeProps } from '@/hooks';
+import { useStoryStore, StoryResponseProps } from '@/hooks';
 import { useGlobalStore } from '@/store/useGlobalStore';
 
 import * as S from './styled';
@@ -14,12 +14,12 @@ export interface StepModalProps {
 }
 
 export const StepModal: React.FC<StepModalProps> = ({ id }) => {
-  const { isLogedIn } = useGlobalStore();
+  const { isLoggedIn } = useGlobalStore();
   const { close } = useModal();
   const { getStory, removeStory } = useStoryStore();
 
   const [loading, setLoading] = useState<boolean>(true);
-  const [story, setStory] = useState<StoryResponeProps>({
+  const [story, setStory] = useState<StoryResponseProps>({
     id: '',
     title: '',
     content: '',
@@ -61,7 +61,7 @@ export const StepModal: React.FC<StepModalProps> = ({ id }) => {
                   <Text size={3} weight={500}>
                     {story.title}
                   </Text>
-                  {isLogedIn && (
+                  {isLoggedIn && (
                     <FontAwesomeIcon
                       icon={faTrash}
                       style={{
