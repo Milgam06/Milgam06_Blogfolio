@@ -8,14 +8,39 @@ export enum ETechStack {
   STYLE = 'style',
 }
 
+export type ITechStackLanguage = 'Typescript' | 'Javascript' | 'Python';
+export type ITechStackFrontend = 'React' | 'ReactNative' | 'NextJS' | 'Vite';
+export type ITechStackBackend = 'NodeJS' | 'NestJS' | 'Express' | 'FastAPI';
+export type ITechStackDatabase = 'PostgreSQL' | 'MySQL' | 'Supabase';
+export type ITechStackQuery = 'GraphQL' | 'RestApi';
+export type ITechStackStyle = 'Mantine' | 'StyledComponents' | 'FramerMotion' | 'Reanimated' | 'Fontawesome';
+export type ITechStackTool =
+  | 'Notion'
+  | 'GitHub'
+  | 'OpenAI'
+  | 'Docker'
+  | 'AWS'
+  | 'Oracle'
+  | 'Prisma'
+  | 'Firebase'
+  | 'GoogleAnalytics'
+  | 'Storybook'
+  | 'Figma'
+  | 'Postman'
+  | 'Cloudflare'
+  | 'GitHubCopilot'
+  | 'Vercel'
+  | 'ESLint'
+  | 'Prettier';
+
 interface ITechStack {
-  [ETechStack.LANGUAGE]: string[];
-  [ETechStack.FRONTEND]: string[];
-  [ETechStack.BACKEND]: string[];
-  [ETechStack.DATABASE]: string[];
-  [ETechStack.QUERY]: string[];
-  [ETechStack.TOOL]: string[];
-  [ETechStack.STYLE]: string[];
+  [ETechStack.LANGUAGE]: ITechStackLanguage[];
+  [ETechStack.FRONTEND]: ITechStackFrontend[];
+  [ETechStack.BACKEND]: ITechStackBackend[];
+  [ETechStack.DATABASE]: ITechStackDatabase[];
+  [ETechStack.QUERY]: ITechStackQuery[];
+  [ETechStack.TOOL]: ITechStackTool[];
+  [ETechStack.STYLE]: ITechStackStyle[];
 }
 export interface IAboutMeType {
   title: string[];
@@ -44,31 +69,30 @@ export const INTRODUCE_SECTION_WHOAMI: IWhoamiType = {
   email: 'milgamfruit@gmail.com',
   github: 'https://github.com/milgam06',
   techstack: {
-    language: ['typescript', 'javascript', 'python'],
-    frontend: ['react', 'react-native', 'next-js', 'vite'],
-    backend: ['nodejs', 'nestjs'],
-    database: ['postgresql', 'mysql', 'supabase'],
-    query: ['graphql', 'rest-api'],
-    style: ['mantine', 'styled-components', 'framer-motion', 'reanimated'],
+    language: ['Typescript', 'Javascript', 'Python'],
+    frontend: ['React', 'ReactNative', 'NextJS', 'Vite'],
+    backend: ['NodeJS', 'NestJS', 'Express', 'FastAPI'],
+    database: ['PostgreSQL', 'MySQL', 'Supabase'],
+    query: ['GraphQL', 'RestApi'],
+    style: ['Mantine', 'StyledComponents', 'FramerMotion', 'Reanimated', 'Fontawesome'],
     tool: [
-      'notion',
-      'github',
-      'openai',
-      'docker',
-      'aws',
-      'oracle',
-      'prisma',
-      'firebase',
-      'google-analytics',
-      'storybook',
-      'figma',
-      'postman',
-      'cloudflare',
-      'github-copilot',
-      'vercel',
-      'eslint',
-      'prettier',
-      'adobe-premiere',
+      'Notion',
+      'GitHub',
+      'OpenAI',
+      'Docker',
+      'AWS',
+      'Oracle',
+      'Prisma',
+      'Firebase',
+      'GoogleAnalytics',
+      'Storybook',
+      'Figma',
+      'Postman',
+      'Cloudflare',
+      'GitHubCopilot',
+      'Vercel',
+      'ESLint',
+      'Prettier',
     ],
   },
   aboutMe: {

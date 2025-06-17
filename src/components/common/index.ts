@@ -8,3 +8,4 @@ export * from './TitleWrapper';
 export * from './Header';
 export * from './Timeline';
 export * from './Tabs';
+export * from './TechStackBox';
