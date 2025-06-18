@@ -2,6 +2,7 @@ import {
   ITechStackFrontend,
   ITechStackLanguage,
   ITechStackBackend,
+  ITechStackMiddleware,
   ITechStackDatabase,
   ITechStackQuery,
   ITechStackStyle,
@@ -18,6 +19,7 @@ type ITechStack =
   | ITechStackLanguage
   | ITechStackFrontend
   | ITechStackBackend
+  | ITechStackMiddleware
   | ITechStackDatabase
   | ITechStackQuery
   | ITechStackStyle

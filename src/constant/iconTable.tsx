@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 import {
   SiCloudflare,
   SiCloudflareHex,
+  SiRecoil,
+  SiRecoilHex,
   SiDocker,
   SiDockerHex,
   SiEslint,
@@ -66,18 +68,23 @@ import {
   SiVercelHex,
   SiVite,
   SiViteHex,
+  SiAxios,
+  SiAxiosHex,
+  SiReactquery,
+  SiReactqueryHex,
 } from '@icons-pack/react-simple-icons';
 
 import { INTRODUCE_SECTION_WHOAMI } from './introduce';
 
 const { techStack } = INTRODUCE_SECTION_WHOAMI;
 
-const { language, frontend, backend, database, query, tool, style } = techStack;
+const { language, frontend, backend, middleware, database, query, tool, style } = techStack;
 
 type IIconKey =
   | (typeof language)[number]
   | (typeof frontend)[number]
   | (typeof backend)[number]
+  | (typeof middleware)[number]
   | (typeof database)[number]
   | (typeof query)[number]
   | (typeof tool)[number]
@@ -103,12 +110,10 @@ export const IconTable: IIconTable = {
     icon: <SiPython size={60} color={SiPythonHex} />,
     defaultColor: SiPythonHex,
   },
-
   React: {
     icon: <SiReact size={60} color={SiReactHex} />,
     defaultColor: SiReactHex,
   },
-
   ReactNative: {
     icon: <SiReact size={60} color={SiReactHex} />,
     defaultColor: SiReactHex,
@@ -148,6 +153,33 @@ export const IconTable: IIconTable = {
   Supabase: {
     icon: <SiSupabase size={60} color={SiSupabaseHex} />,
     defaultColor: SiSupabaseHex,
+  },
+  Axios: {
+    icon: <SiAxios size={60} color={SiAxiosHex} />,
+    defaultColor: SiAxiosHex,
+  },
+  Zustand: {
+    icon: 'Zustand',
+  },
+  Recoil: {
+    icon: <SiRecoil size={60} color={SiRecoilHex} />,
+    defaultColor: SiRecoilHex,
+  },
+  ReactQuery: {
+    icon: <SiReactquery size={60} color={SiReactqueryHex} />,
+    defaultColor: SiReactqueryHex,
+  },
+  Prisma: {
+    icon: <SiPrisma size={60} color={SiPrismaHex} />,
+    defaultColor: SiPrismaHex,
+  },
+  ESLint: {
+    icon: <SiEslint size={60} color={SiEslintHex} />,
+    defaultColor: SiEslintHex,
+  },
+  Prettier: {
+    icon: <SiPrettier size={60} color={SiPrettierHex} />,
+    defaultColor: SiPrettierHex,
   },
   GraphQL: {
     icon: <SiGraphql size={60} color={SiGraphqlHex} />,
@@ -197,10 +229,6 @@ export const IconTable: IIconTable = {
   Oracle: {
     icon: 'Oracle',
   },
-  Prisma: {
-    icon: <SiPrisma size={60} color={SiPrismaHex} />,
-    defaultColor: SiPrismaHex,
-  },
   Firebase: {
     icon: <SiFirebase size={60} color={SiFirebaseHex} />,
     defaultColor: SiFirebaseHex,
@@ -232,13 +260,5 @@ export const IconTable: IIconTable = {
   Vercel: {
     icon: <SiVercel size={60} color={SiVercelHex} />,
     defaultColor: SiVercelHex,
-  },
-  ESLint: {
-    icon: <SiEslint size={60} color={SiEslintHex} />,
-    defaultColor: SiEslintHex,
-  },
-  Prettier: {
-    icon: <SiPrettier size={60} color={SiPrettierHex} />,
-    defaultColor: SiPrettierHex,
   },
 };

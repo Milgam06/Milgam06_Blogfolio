@@ -2,15 +2,17 @@ export enum ETechStack {
   LANGUAGE = 'language',
   FRONTEND = 'frontend',
   BACKEND = 'backend',
+  MIDDLEWARE = 'middleware',
   DATABASE = 'database',
   QUERY = 'query',
-  TOOL = 'tool',
   STYLE = 'style',
+  TOOL = 'tool',
 }
 
 export type ITechStackLanguage = 'Typescript' | 'Javascript' | 'Python';
 export type ITechStackFrontend = 'React' | 'ReactNative' | 'NextJS' | 'Vite';
 export type ITechStackBackend = 'NodeJS' | 'NestJS' | 'Express' | 'FastAPI';
+export type ITechStackMiddleware = 'Axios' | 'Zustand' | 'Recoil' | 'ReactQuery' | 'Prisma' | 'ESLint' | 'Prettier';
 export type ITechStackDatabase = 'PostgreSQL' | 'MySQL' | 'Supabase';
 export type ITechStackQuery = 'GraphQL' | 'RestApi';
 export type ITechStackStyle = 'Mantine' | 'StyledComponents' | 'FramerMotion' | 'Reanimated' | 'Fontawesome';
@@ -21,7 +23,6 @@ export type ITechStackTool =
   | 'Docker'
   | 'AWS'
   | 'Oracle'
-  | 'Prisma'
   | 'Firebase'
   | 'GoogleAnalytics'
   | 'Storybook'
@@ -29,14 +30,13 @@ export type ITechStackTool =
   | 'Postman'
   | 'Cloudflare'
   | 'Copilot'
-  | 'Vercel'
-  | 'ESLint'
-  | 'Prettier';
+  | 'Vercel';
 
 interface ITechStack {
   [ETechStack.LANGUAGE]: ITechStackLanguage[];
   [ETechStack.FRONTEND]: ITechStackFrontend[];
   [ETechStack.BACKEND]: ITechStackBackend[];
+  [ETechStack.MIDDLEWARE]: ITechStackMiddleware[];
   [ETechStack.DATABASE]: ITechStackDatabase[];
   [ETechStack.QUERY]: ITechStackQuery[];
   [ETechStack.TOOL]: ITechStackTool[];
@@ -72,6 +72,7 @@ export const INTRODUCE_SECTION_WHOAMI: IWhoamiType = {
     language: ['Typescript', 'Javascript', 'Python'],
     frontend: ['React', 'ReactNative', 'NextJS', 'Vite'],
     backend: ['NodeJS', 'NestJS', 'Express', 'FastAPI'],
+    middleware: ['Axios', 'Zustand', 'Recoil', 'ReactQuery', 'Prisma', 'ESLint', 'Prettier'],
     database: ['PostgreSQL', 'MySQL', 'Supabase'],
     query: ['GraphQL', 'RestApi'],
     style: ['Mantine', 'StyledComponents', 'FramerMotion', 'Reanimated', 'Fontawesome'],
@@ -82,7 +83,7 @@ export const INTRODUCE_SECTION_WHOAMI: IWhoamiType = {
       'Docker',
       'AWS',
       'Oracle',
-      'Prisma',
+
       'Firebase',
       'GoogleAnalytics',
       'Storybook',
@@ -91,8 +92,6 @@ export const INTRODUCE_SECTION_WHOAMI: IWhoamiType = {
       'Cloudflare',
       'Copilot',
       'Vercel',
-      'ESLint',
-      'Prettier',
     ],
   },
   aboutMe: {
