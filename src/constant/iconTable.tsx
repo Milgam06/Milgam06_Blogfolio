@@ -70,9 +70,9 @@ import {
 
 import { INTRODUCE_SECTION_WHOAMI } from './introduce';
 
-const { techstack } = INTRODUCE_SECTION_WHOAMI;
+const { techStack } = INTRODUCE_SECTION_WHOAMI;
 
-const { language, frontend, backend, database, query, tool, style } = techstack;
+const { language, frontend, backend, database, query, tool, style } = techStack;
 
 type IIconKey =
   | (typeof language)[number]
@@ -225,7 +225,7 @@ export const IconTable: IIconTable = {
     icon: <SiCloudflare size={60} color={SiCloudflareHex} />,
     defaultColor: SiCloudflareHex,
   },
-  GitHubCopilot: {
+  Copilot: {
     icon: <SiGithubcopilot size={60} color={SiGithubcopilotHex} />,
     defaultColor: SiGithubcopilotHex,
   },

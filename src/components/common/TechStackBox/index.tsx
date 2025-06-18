@@ -39,10 +39,14 @@ export const TechStackBox: React.FC<ITechStackBoxProps> = memo(({ techStack }) =
   console.log(defaultColor);
 
   return (
-    <AspectRatio w={128} ratio={1} bg="rgba(0,0,0,0.1)" styles={{ root: { borderRadius: '8px' } }}>
-      <Stack justify="center" align="center" gap="sm">
+    <AspectRatio
+      w={128}
+      ratio={1}
+      bg="#fafafa"
+      styles={{ root: { borderRadius: '12px', boxShadow: '0 0 10px rgba(0,0,0,0.1)' } }}>
+      <Stack justify="center" align="center" gap="sm" styles={{ root: { flexWrap: 'wrap' } }}>
         {icon}
-        <Text size={1.2} weight={900}>
+        <Text size={1.2} weight={900} textAlign="center" color={defaultColor}>
           {techStack}
         </Text>
       </Stack>

@@ -28,7 +28,7 @@ export type ITechStackTool =
   | 'Figma'
   | 'Postman'
   | 'Cloudflare'
-  | 'GitHubCopilot'
+  | 'Copilot'
   | 'Vercel'
   | 'ESLint'
   | 'Prettier';
@@ -56,7 +56,7 @@ export interface IWhoamiType {
   email: string;
   github: string;
   aboutMe: IAboutMeType;
-  techstack: ITechStack;
+  techStack: ITechStack;
   login: string;
 }
 
@@ -68,7 +68,7 @@ export const INTRODUCE_SECTION_WHOAMI: IWhoamiType = {
   nationality: 'Korean',
   email: 'milgamfruit@gmail.com',
   github: 'https://github.com/milgam06',
-  techstack: {
+  techStack: {
     language: ['Typescript', 'Javascript', 'Python'],
     frontend: ['React', 'ReactNative', 'NextJS', 'Vite'],
     backend: ['NodeJS', 'NestJS', 'Express', 'FastAPI'],
@@ -89,7 +89,7 @@ export const INTRODUCE_SECTION_WHOAMI: IWhoamiType = {
       'Figma',
       'Postman',
       'Cloudflare',
-      'GitHubCopilot',
+      'Copilot',
       'Vercel',
       'ESLint',
       'Prettier',
