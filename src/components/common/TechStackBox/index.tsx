@@ -38,20 +38,13 @@ export const TechStackBox: React.FC<ITechStackBoxProps> = memo(({ techStack }) =
 
     return { icon, defaultColor };
   }, [techStack]);
-  console.log(defaultColor);
 
   return (
-    <AspectRatio
-      w={128}
-      ratio={1}
-      bg="#fafafa"
-      styles={{ root: { borderRadius: '12px', boxShadow: '0 0 10px rgba(0,0,0,0.1)' } }}>
-      <Stack justify="center" align="center" gap="sm" styles={{ root: { flexWrap: 'wrap' } }}>
-        {icon}
-        <Text size={1.2} weight={900} textAlign="center" color={defaultColor}>
-          {techStack}
-        </Text>
-      </Stack>
-    </AspectRatio>
+    <Stack w="100%" justify="flex-end" align="center" gap="sm">
+      {icon}
+      <Text size={1.2} weight={600} textAlign="center" color={defaultColor}>
+        {techStack}
+      </Text>
+    </Stack>
   );
 });
