@@ -53,7 +53,7 @@ export const Tabs: React.FC<ITabsProps> = memo(
       return (
         <>
           {tabsItems.map((item) => (
-            <MantineTabs.Panel key={item.tabsValue} value={item.tabsValue} p="md" styles={tabsPanelStyles}>
+            <MantineTabs.Panel key={item.tabsValue} value={item.tabsValue} p="lg" styles={tabsPanelStyles}>
               {item.tabsItem}
             </MantineTabs.Panel>
           ))}

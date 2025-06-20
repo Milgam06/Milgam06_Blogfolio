@@ -9,7 +9,7 @@ import {
   ITechStackTool,
   IconTable,
 } from '@/constant';
-import { AspectRatio, Stack } from '@mantine/core';
+import { Stack } from '@mantine/core';
 import React from 'react';
 import { useMemo } from 'react';
 import { memo } from 'react';

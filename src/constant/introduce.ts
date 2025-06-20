@@ -83,7 +83,6 @@ export const INTRODUCE_SECTION_WHOAMI: IWhoamiType = {
       'Docker',
       'AWS',
       'Oracle',
-
       'Firebase',
       'GoogleAnalytics',
       'Storybook',

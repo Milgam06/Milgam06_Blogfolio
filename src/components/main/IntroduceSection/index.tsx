@@ -58,8 +58,8 @@ export const IntroduceSection: React.FC = () => {
             }}
             tabsTabStyles={{
               tabLabel: {
-                fontSize: '1.2rem',
-                fontWeight: 600,
+                fontSize: '1.4rem',
+                fontWeight: 900,
               },
             }}
           />
