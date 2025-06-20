@@ -2,20 +2,45 @@ export enum ETechStack {
   LANGUAGE = 'language',
   FRONTEND = 'frontend',
   BACKEND = 'backend',
+  MIDDLEWARE = 'middleware',
   DATABASE = 'database',
   QUERY = 'query',
-  TOOL = 'tool',
   STYLE = 'style',
+  TOOL = 'tool',
 }
 
+export type ITechStackLanguage = 'Typescript' | 'Javascript' | 'Python';
+export type ITechStackFrontend = 'React' | 'ReactNative' | 'NextJS' | 'Vite';
+export type ITechStackBackend = 'NodeJS' | 'NestJS' | 'Express' | 'FastAPI';
+export type ITechStackMiddleware = 'Axios' | 'Zustand' | 'Recoil' | 'ReactQuery' | 'Prisma' | 'ESLint' | 'Prettier';
+export type ITechStackDatabase = 'PostgreSQL' | 'MySQL' | 'Supabase';
+export type ITechStackQuery = 'GraphQL' | 'RestApi';
+export type ITechStackStyle = 'Mantine' | 'StyledComponents' | 'FramerMotion' | 'Reanimated' | 'Fontawesome';
+export type ITechStackTool =
+  | 'Notion'
+  | 'GitHub'
+  | 'OpenAI'
+  | 'Docker'
+  | 'AWS'
+  | 'Oracle'
+  | 'Firebase'
+  | 'GoogleAnalytics'
+  | 'Storybook'
+  | 'Figma'
+  | 'Postman'
+  | 'Cloudflare'
+  | 'Copilot'
+  | 'Vercel';
+
 interface ITechStack {
-  [ETechStack.LANGUAGE]: string[];
-  [ETechStack.FRONTEND]: string[];
-  [ETechStack.BACKEND]: string[];
-  [ETechStack.DATABASE]: string[];
-  [ETechStack.QUERY]: string[];
-  [ETechStack.TOOL]: string[];
-  [ETechStack.STYLE]: string[];
+  [ETechStack.LANGUAGE]: ITechStackLanguage[];
+  [ETechStack.FRONTEND]: ITechStackFrontend[];
+  [ETechStack.BACKEND]: ITechStackBackend[];
+  [ETechStack.MIDDLEWARE]: ITechStackMiddleware[];
+  [ETechStack.DATABASE]: ITechStackDatabase[];
+  [ETechStack.QUERY]: ITechStackQuery[];
+  [ETechStack.TOOL]: ITechStackTool[];
+  [ETechStack.STYLE]: ITechStackStyle[];
 }
 export interface IAboutMeType {
   title: string[];
@@ -31,7 +56,7 @@ export interface IWhoamiType {
   email: string;
   github: string;
   aboutMe: IAboutMeType;
-  techstack: ITechStack;
+  techStack: ITechStack;
   login: string;
 }
 
@@ -43,32 +68,29 @@ export const INTRODUCE_SECTION_WHOAMI: IWhoamiType = {
   nationality: 'Korean',
   email: 'milgamfruit@gmail.com',
   github: 'https://github.com/milgam06',
-  techstack: {
-    language: ['typescript', 'javascript', 'python'],
-    frontend: ['react', 'react-native', 'next-js', 'vite'],
-    backend: ['nodejs', 'nestjs'],
-    database: ['postgresql', 'mysql', 'supabase'],
-    query: ['graphql', 'rest-api'],
-    style: ['mantine', 'styled-components', 'framer-motion', 'reanimated'],
+  techStack: {
+    language: ['Typescript', 'Javascript', 'Python'],
+    frontend: ['React', 'ReactNative', 'NextJS', 'Vite'],
+    backend: ['NodeJS', 'NestJS', 'Express', 'FastAPI'],
+    middleware: ['Axios', 'Zustand', 'Recoil', 'ReactQuery', 'Prisma', 'ESLint', 'Prettier'],
+    database: ['PostgreSQL', 'MySQL', 'Supabase'],
+    query: ['GraphQL', 'RestApi'],
+    style: ['Mantine', 'StyledComponents', 'FramerMotion', 'Reanimated', 'Fontawesome'],
     tool: [
-      'notion',
-      'github',
-      'openai',
-      'docker',
-      'aws',
-      'oracle',
-      'prisma',
-      'firebase',
-      'google-analytics',
-      'storybook',
-      'figma',
-      'postman',
-      'cloudflare',
-      'github-copilot',
-      'vercel',
-      'eslint',
-      'prettier',
-      'adobe-premiere',
+      'Notion',
+      'GitHub',
+      'OpenAI',
+      'Docker',
+      'AWS',
+      'Oracle',
+      'Firebase',
+      'GoogleAnalytics',
+      'Storybook',
+      'Figma',
+      'Postman',
+      'Cloudflare',
+      'Copilot',
+      'Vercel',
     ],
   },
   aboutMe: {

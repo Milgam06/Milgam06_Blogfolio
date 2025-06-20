@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const SectionLayoutContainer = styled.section<{
   backgroundColor?: string;
@@ -8,10 +8,7 @@ export const SectionLayoutContainer = styled.section<{
   flex-direction: column;
   justify-content: center;
   flex: 1;
-
-  background: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : "#fefefe"};
-  /* scroll-snap-align: start; */
+  background: ${(props) => (props.backgroundColor ? props.backgroundColor : '#fefefe')};
 `;
 
 export const SectionLayoutTitleContainer = styled.div`
@@ -20,7 +17,6 @@ export const SectionLayoutTitleContainer = styled.div`
   flex-direction: column;
   row-gap: 1rem;
   margin-bottom: 2rem;
-  /* border: 1px solid red; */
 `;
 
 export const SectionLayoutContentContainer = styled.div`

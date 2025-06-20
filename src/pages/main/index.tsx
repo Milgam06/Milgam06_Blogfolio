@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { MainSection, StepSection, HighlightSection, IntroduceSection } from '@/components';
+import { MainSection, StepSection, HighlightSection, IntroduceSection, TechStackSection } from '@/components';
 import { StoryProps, useStoryStore, useLogin } from '@/hooks';
 
 export const MainPage: React.FC = () => {
@@ -39,6 +39,7 @@ export const MainPage: React.FC = () => {
     <>
       <MainSection />
       <IntroduceSection />
+      <TechStackSection />
       <StepSection />
       {highlightStories
         ? highlightStories.map((stories, i) => (
