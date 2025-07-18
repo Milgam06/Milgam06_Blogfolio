@@ -1,28 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { Flex } from '@mantine/core';
 
 import { StepButton, StepModal, AddModal, Text, BaseLayout } from '@/components';
-import { useFadeInScroll } from '@/hooks';
 import { useModal } from '@/providers';
 import { useStoryStore, StoryResponseProps } from '@/hooks';
 import { useGlobalStore } from '@/store/useGlobalStore';
-
-import { Flex } from '@mantine/core';
 
 export const StepSection: React.FC = () => {
   const { getAllStories } = useStoryStore();
   const { isLoggedIn } = useGlobalStore();
   const { open } = useModal();
-  const { fadeInScroll } = useFadeInScroll();
+
   const [stories, setStories] = useState<StoryResponseProps[]>([]);
 
+  const fetchAllStories = useCallback(async () => {
+    const storedStories = await getAllStories();
+    if (storedStories) {
+      setStories(storedStories);
+    }
+  }, [getAllStories]);
+
   useEffect(() => {
-    const fetchStories = async () => {
-      const storedStories = await getAllStories();
-      if (storedStories) {
-        setStories(storedStories);
-      }
-    };
-    fetchStories();
+    fetchAllStories();
   }, []);
 
   const onOpenStepModal = (id: string) => {
@@ -49,47 +48,26 @@ export const StepSection: React.FC = () => {
               scrollbarWidth: 'none',
             },
           }}>
-          {stories.map((story) => (
-            <>
+          {stories.map(({ id, filesUrl, title }) => {
+            const thumbnailImage = filesUrl[0];
+            return (
               <StepButton
                 isLarge={true}
                 hasImage={true}
-                imgSrc={story.filesUrl[0]}
-                onClickHandler={() => onOpenStepModal(story.id)}>
+                imgSrc={thumbnailImage}
+                onClickHandler={() => onOpenStepModal(id)}>
                 <Text size={1.4} weight={100}>
-                  {story.title}
+                  {title}
                 </Text>
               </StepButton>
-              <StepButton
-                isLarge={true}
-                hasImage={true}
-                imgSrc={story.filesUrl[0]}
-                onClickHandler={() => onOpenStepModal(story.id)}>
-                <Text size={1.4} weight={100}>
-                  {story.title}
-                </Text>
-              </StepButton>
-              <StepButton
-                isLarge={true}
-                hasImage={true}
-                imgSrc={story.filesUrl[0]}
-                onClickHandler={() => onOpenStepModal(story.id)}>
-                <Text size={1.4} weight={100}>
-                  {story.title}
-                </Text>
-              </StepButton>
-            </>
-          ))}
+            );
+          })}
           {isLoggedIn && (
             <StepButton isLarge={false} onClickHandler={onOpenAddModal}>
               +
             </StepButton>
           )}
         </Flex>
-        {/* <SectionLayout title="Experience" subtitle="저의 소중한 경험들이에요.">
-        <S.StepSectionContentContainer {...fadeInScroll({ delay: 0.08 })}>
-        </S.StepSectionContentContainer>
-        </SectionLayout> */}
       </BaseLayout>
     </>
   );
