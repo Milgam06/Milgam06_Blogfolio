@@ -52,6 +52,7 @@ export const StepSection: React.FC = () => {
             const thumbnailImage = filesUrl[0];
             return (
               <StepButton
+                key={id}
                 isLarge={true}
                 hasImage={true}
                 imgSrc={thumbnailImage}
