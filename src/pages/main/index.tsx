@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import { MainSection, StepSection, HighlightSection, IntroduceSection, TechStackSection } from '@/components';
+import { MainSection, StepSection, IntroduceSection, TechStackSection } from '@/components';
 import { StoryProps, useStoryStore, useLogin } from '@/hooks';
+import { Stack } from '@mantine/core';
 
 export const MainPage: React.FC = () => {
   const [highlightStories, setHighlightStories] = useState<StoryProps[]>([]);
@@ -36,22 +37,11 @@ export const MainPage: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Stack>
       <MainSection />
       <IntroduceSection />
       <TechStackSection />
       <StepSection />
-      {highlightStories
-        ? highlightStories.map((stories, i) => (
-            <HighlightSection
-              key={i}
-              title={stories.title}
-              content={stories.content}
-              filesUrl={stories.filesUrl}
-              isFirst={i === 1 ? true : false}
-            />
-          ))
-        : null}
-    </>
+    </Stack>
   );
 };
