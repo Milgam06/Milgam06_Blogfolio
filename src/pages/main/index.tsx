@@ -1,31 +1,22 @@
-import { useState, useEffect } from 'react';
-
 import { MainSection, StepSection, IntroduceSection, TechStackSection } from '@/components';
-import { StoryProps, useStoryStore, useLogin } from '@/hooks';
+import { useLogin } from '@/hooks';
 import { Stack } from '@mantine/core';
+import { useCallback } from 'react';
+import { useDidMount } from 'rooks';
 
 export const MainPage: React.FC = () => {
-  const [highlightStories, setHighlightStories] = useState<StoryProps[]>([]);
   const { handleValidateUser } = useLogin();
-  const { getHighlightStories } = useStoryStore();
-  const getSessionData = () => {
+
+  const getSessionData = useCallback(() => {
     const sessionData = sessionStorage.getItem(`firebase:authUser:${import.meta.env.VITE_FIREBASE_API_KEY}:[DEFAULT]`);
-    if (sessionData) {
-      const loginData = JSON.parse(sessionData);
-      return loginData.uid;
+    if (!sessionData) {
+      return;
     }
-    return;
-  };
-  useEffect(() => {
-    const fetchHighlightStories = async () => {
-      const storedHighlightStories = await getHighlightStories();
+    const loginData = JSON.parse(sessionData);
+    return loginData.uid;
+  }, []);
 
-      if (storedHighlightStories) {
-        setHighlightStories(storedHighlightStories);
-      }
-    };
-    fetchHighlightStories();
-
+  useDidMount(() => {
     try {
       const loginSession = getSessionData();
       if (loginSession) {
@@ -34,7 +25,7 @@ export const MainPage: React.FC = () => {
     } catch (error) {
       console.error(error);
     }
-  }, []);
+  });
 
   return (
     <Stack>

@@ -10,12 +10,15 @@ export const useLogin = () => {
   const provider = new GoogleAuthProvider();
   const { setIsLoggedIn } = useGlobalStore();
 
-  const handleValidateUser = useCallback((loginUid: string) => {
-    if (loginUid === import.meta.env.VITE_WHOAMI_GOOGLE) {
-      setIsLoggedIn(true);
-    }
-    return;
-  }, []);
+  const handleValidateUser = useCallback(
+    (loginUid: string) => {
+      if (loginUid === import.meta.env.VITE_WHOAMI_GOOGLE) {
+        setIsLoggedIn(true);
+      }
+      return;
+    },
+    [setIsLoggedIn]
+  );
 
   const handleWhoAmI = useCallback(async () => {
     try {
@@ -26,6 +29,6 @@ export const useLogin = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [handleValidateUser, navigate, provider]);
   return { handleWhoAmI, handleValidateUser };
 };
