@@ -75,7 +75,7 @@ export const useStoryStore = () => {
         highlight: highlight,
       });
     } catch (error) {
-      console.log('firebaseFuck', error);
+      console.log('firebase', error);
     }
   }, []);
 
@@ -86,7 +86,7 @@ export const useStoryStore = () => {
     try {
       await deleteDoc(doc(db, 'step', id));
     } catch (error) {
-      console.error('firebaseFuck', error);
+      console.error('firebase', error);
     }
   }, []);
 
