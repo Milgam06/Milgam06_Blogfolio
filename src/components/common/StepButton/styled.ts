@@ -1,13 +1,17 @@
-import styled from "@emotion/styled";
-import { motion } from "framer-motion";
+import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
 export interface ButtonStyleProps {
   isLarge: boolean;
 }
 
 export const ButtonContainer = styled(motion.div)<ButtonStyleProps>`
-  width: ${({ isLarge }) => (isLarge ? "20rem" : "16rem")};
-  height: ${({ isLarge }) => (isLarge ? "20rem" : "16rem")};
+  min-width: ${({ isLarge }) => (isLarge ? '20rem' : '16rem')};
+  max-width: ${({ isLarge }) => (isLarge ? '20rem' : '16rem')};
+  width: 100%;
+  min-height: ${({ isLarge }) => (isLarge ? '20rem' : '16rem')};
+  max-height: ${({ isLarge }) => (isLarge ? '20rem' : '16rem')};
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,6 +1,7 @@
 import { Global } from '@emotion/react';
 import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
+import '@mantine/carousel/styles.css';
 
 import { ModalProvider } from '@/providers';
 import { globalStyle } from '@/styles';
