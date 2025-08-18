@@ -31,10 +31,10 @@ export const useStoryStore = () => {
         filesUrl: doc.data().files,
         highlight: doc.data().highlight,
       }));
-      console.log(typeof allStoryResult, 'allStoryResult');
+
       return allStoryResult;
     } catch (error) {
-      console.log('firebaseFuck', error);
+      console.log('firebase', error);
       return [];
     }
   }, []);
@@ -45,7 +45,7 @@ export const useStoryStore = () => {
   const getStory = useCallback(async (id: string) => {
     try {
       const querySnapshot = await getDoc(doc(db, 'step', id));
-      console.log(querySnapshot, 'query');
+
       const storyResult: StoryResponseProps = {
         id: querySnapshot.id,
         title: querySnapshot.data()?.title,
@@ -53,10 +53,9 @@ export const useStoryStore = () => {
         filesUrl: querySnapshot.data()?.files,
         highlight: querySnapshot.data()?.highlight,
       };
-      console.log(storyResult, 'storyResult');
       return storyResult;
     } catch (error) {
-      console.log('firebaseFuck', error);
+      console.log('firebase', error);
     }
   }, []);
 
@@ -100,7 +99,6 @@ export const useStoryStore = () => {
   const getHighlightStories = useCallback(async () => {
     const storedStories = await getAllStories();
     const HighlightStories = storedStories.filter((story) => story.highlight);
-    console.log(HighlightStories, 'highlight');
     return HighlightStories;
   }, []);
 
