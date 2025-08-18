@@ -1,134 +1,70 @@
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faAt } from "@fortawesome/free-solid-svg-icons";
+import { useCallback, useMemo } from 'react';
+import { Flex, Stack } from '@mantine/core';
 
-import { SectionLayout, TiltingCard, Text, TitleWrapper } from "@/components";
-import { INTRODUCE_SECTION_WHOAMI } from "@/constant";
-import { useFadeInScroll } from "@/hooks";
-import { WhoamiImg, ComputerSVG, KoreaFlagSVG, MilgamSVG } from "@/assets";
-
-import * as S from "./styled";
-
-const IntroduceTextHeader: React.FC = () => {
-  return (
-    <S.IntroduceContentContainer>
-      <TitleWrapper>
-        <S.IntroduceContentTextIconContainer>
-          <Text size={7} weight={800} color="#fefefe">
-            {INTRODUCE_SECTION_WHOAMI.nick}
-          </Text>
-
-          <S.IntroduceIcon
-            src={MilgamSVG}
-            style={{ width: "7rem", height: "7rem" }}
-          />
-        </S.IntroduceContentTextIconContainer>
-      </TitleWrapper>
-      {/* <TitleWrapper>
-        <Text size={1.4} weight={300}>
-          {INTRODUCE_SECTION_WHOAMI.birth}
-        </Text>
-      </TitleWrapper> */}
-    </S.IntroduceContentContainer>
-  );
-};
-
-const IntroduceTextMain: React.FC = () => {
-  const navigate = useNavigate();
-  const onMoveLogin = () => {
-    navigate(INTRODUCE_SECTION_WHOAMI.login);
-  };
-  return (
-    <S.IntroduceContentContainer>
-      <TitleWrapper padding="0.6rem 1rem">
-        <Text size={2.4} weight={600} color="#fefefe">
-          {INTRODUCE_SECTION_WHOAMI.name}
-        </Text>
-      </TitleWrapper>
-      <TitleWrapper padding="0.6rem 1rem">
-        <S.IntroduceContentTextIconContainer>
-          <Text size={2.4} weight={600} color="#fefefe">
-            {INTRODUCE_SECTION_WHOAMI.role}
-          </Text>
-          <S.IntroduceIcon
-            src={ComputerSVG}
-            onClick={onMoveLogin}
-            style={{ cursor: "pointer" }}
-          />
-        </S.IntroduceContentTextIconContainer>
-      </TitleWrapper>
-      <TitleWrapper padding="0.6rem 1rem">
-        <S.IntroduceContentTextIconContainer>
-          <Text size={2.4} weight={600} color="#fefefe">
-            {INTRODUCE_SECTION_WHOAMI.nationality}
-          </Text>
-          <S.IntroduceIcon src={KoreaFlagSVG} />
-        </S.IntroduceContentTextIconContainer>
-      </TitleWrapper>
-    </S.IntroduceContentContainer>
-  );
-};
-
-const IntroduceTextFooter: React.FC = () => {
-  const onMoveGithub = () => {
-    window.open(INTRODUCE_SECTION_WHOAMI.github, "_blank");
-  };
-  const onMoveEmail = () => {
-    window.open(`mailto:${INTRODUCE_SECTION_WHOAMI.email}`);
-  };
-  return (
-    <S.IntroduceIconContainer>
-      <S.IntroduceIconContentContainer>
-        <FontAwesomeIcon
-          icon={faGithub}
-          style={{
-            width: "4rem",
-            height: "4rem",
-            opacity: 1,
-            cursor: "pointer",
-          }}
-          onClick={onMoveGithub}
-        />
-        {/* <Text size={1.4} weight={600} onClick={onMoveGithub}>
-          GITHUB
-        </Text> */}
-      </S.IntroduceIconContentContainer>
-
-      <S.IntroduceIconContentContainer>
-        <FontAwesomeIcon
-          icon={faAt}
-          style={{
-            width: "4rem",
-            height: "4rem",
-            opacity: 1,
-            cursor: "pointer",
-          }}
-          onClick={onMoveEmail}
-        />
-        {/* <Text size={1.4} weight={600} onClick={onMoveEmail}>
-          EMAIL
-        </Text> */}
-      </S.IntroduceIconContentContainer>
-    </S.IntroduceIconContainer>
-  );
-};
+import { TiltingCard, Text, BaseLayout, ITabsItemProps, Tabs, AboutMe, MyTimeline } from '@/components';
+import { BUY_ME_A_COFFEE_URL, INTRODUCE_SECTION_WHOAMI } from '@/constant';
+import { WhoamiIntroduceImg } from '@/assets';
 
 export const IntroduceSection: React.FC = () => {
-  const { fadeInScroll } = useFadeInScroll();
+  const { name, birth } = useMemo(() => {
+    return INTRODUCE_SECTION_WHOAMI;
+  }, []);
+
+  const handleClickPlacard = useCallback(() => {
+    window.open(BUY_ME_A_COFFEE_URL, '_blank');
+  }, []);
+
+  const items: ITabsItemProps[] = [
+    {
+      tabsValue: 'whoami',
+      tabsLabel: 'Who am I?',
+      tabsItem: <AboutMe />,
+    },
+    {
+      tabsValue: 'timeline',
+      tabsLabel: 'Timeline',
+      tabsItem: <MyTimeline />,
+    },
+  ];
 
   return (
     <>
-      <SectionLayout>
-        <S.IntroduceSectionContainer {...fadeInScroll({ delay: 0.08 })}>
-          <TiltingCard cardImgSrc={WhoamiImg} />
-          <S.IntroduceSectionTextContainer>
-            <IntroduceTextHeader />
-            <IntroduceTextMain />
-            <IntroduceTextFooter />
-          </S.IntroduceSectionTextContainer>
-        </S.IntroduceSectionContainer>
-      </SectionLayout>
+      <BaseLayout isFullWidth justify="center" align="center" gap={100}>
+        <Text size={8} weight={900} color="linear-gradient(to right, #FF8C42 0%, #FFE5B4 50%,#FF8C42 100%)">
+          About Me
+        </Text>
+        <Flex w="100%" direction={{ base: 'column', sm: 'row' }} align="flex-start" justify="center" gap={80}>
+          <Stack justify="center" align="center">
+            <Stack justify="center" align="center">
+              <TiltingCard cardImgSrc={WhoamiIntroduceImg} onClick={handleClickPlacard} />
+              <Stack w="100%" justify="center" align="flex-start" gap={4} px="sm">
+                <Text size={3.2} weight={900}>
+                  {name}
+                </Text>
+                <Text size={1.6} weight={300} color="#c1c1c1">
+                  {birth}
+                </Text>
+              </Stack>
+            </Stack>
+          </Stack>
+          <Tabs
+            tabsItems={items}
+            defaultValue="whoami"
+            listGrow
+            tabsStyles={{
+              root: {
+                overflow: 'auto',
+              },
+            }}
+            tabsTabStyles={{
+              tabLabel: {
+                fontSize: '1.4rem',
+                fontWeight: 900,
+              },
+            }}
+          />
+        </Flex>
+      </BaseLayout>
     </>
   );
 };

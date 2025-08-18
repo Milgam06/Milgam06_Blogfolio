@@ -1,5 +1,6 @@
-import { css } from "@emotion/react";
-import { reset } from "./reset";
+import { css } from '@emotion/react';
+import '@fontsource/inter';
+import { reset } from './reset';
 
 export const globalStyle = () => {
   return css`
@@ -13,9 +14,13 @@ export const globalStyle = () => {
     }
 
     html {
-      font-size: 14px;
+      font-size: 10px;
       width: 100%;
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       cursor: default;
       -ms-overflow-style: none;
       ::-webkit-scrollbar {
@@ -41,7 +46,7 @@ export const globalStyle = () => {
     #app,
     #root,
     #__next {
-      font-family: "Spoqa Han Sans Neo", "sans-serif";
+      font-family: 'Inter', sans-serif;
       font-weight: 300;
       font-style: normal;
       letter-spacing: -0.03rem;

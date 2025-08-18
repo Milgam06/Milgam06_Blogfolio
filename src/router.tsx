@@ -1,7 +1,7 @@
-import { Route, Routes, Outlet } from "react-router-dom";
+import { Route, Routes, Outlet } from 'react-router-dom';
 
-import { DefaultLayout } from "@/components";
-import { LoginPage, MainPage } from "@/pages";
+import { DefaultLayout, Header } from '@/components';
+import { LoginPage, MainPage } from '@/pages';
 
 export const Router: React.FC = () => {
   return (
@@ -11,11 +11,11 @@ export const Router: React.FC = () => {
           element={
             <>
               <DefaultLayout>
+                <Header />
                 <Outlet />
               </DefaultLayout>
             </>
-          }
-        >
+          }>
           <Route path="/" element={<MainPage />} />
           <Route path="/me" element={<LoginPage />} />
         </Route>

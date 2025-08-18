@@ -1,11 +1,11 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 interface GlobalStoreProps {
-  isLogedIn: boolean;
-  setIsLogedIn: (isLogedIn: boolean) => void;
+  isLoggedIn: boolean;
+  setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
 
 export const useGlobalStore = create<GlobalStoreProps>((set) => ({
-  isLogedIn: false,
-  setIsLogedIn: (isLogedIn: boolean) => set({ isLogedIn }),
+  isLoggedIn: false,
+  setIsLoggedIn: (isLoggedIn: boolean) => set({ isLoggedIn }),
 }));

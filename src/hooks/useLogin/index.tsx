@@ -1,35 +1,34 @@
-import { useNavigate } from "react-router-dom";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  browserSessionPersistence,
-  setPersistence,
-} from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { GoogleAuthProvider, signInWithPopup, browserSessionPersistence, setPersistence } from 'firebase/auth';
 
-import { auth } from "@/apis";
-import { useGlobalStore } from "@/store/useGlobalStore";
+import { auth } from '@/apis';
+import { useGlobalStore } from '@/store/useGlobalStore';
+import { useCallback } from 'react';
 
 export const useLogin = () => {
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
-  const { setIsLogedIn } = useGlobalStore();
+  const { setIsLoggedIn } = useGlobalStore();
 
-  const handleValidateUser = (loginUid: string) => {
-    if (loginUid === import.meta.env.VITE_WHOAMI_GOOGLE) {
-      setIsLogedIn(true);
-    }
-    return;
-  };
+  const handleValidateUser = useCallback(
+    (loginUid: string) => {
+      if (loginUid === import.meta.env.VITE_WHOAMI_GOOGLE) {
+        setIsLoggedIn(true);
+      }
+      return;
+    },
+    [setIsLoggedIn]
+  );
 
-  const handleWhoAmI = async () => {
+  const handleWhoAmI = useCallback(async () => {
     try {
       await setPersistence(auth, browserSessionPersistence);
       const loginUser = await signInWithPopup(auth, provider);
       handleValidateUser(loginUser.user.uid);
-      navigate("/");
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [handleValidateUser, navigate, provider]);
   return { handleWhoAmI, handleValidateUser };
 };

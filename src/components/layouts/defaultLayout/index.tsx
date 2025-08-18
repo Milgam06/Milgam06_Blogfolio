@@ -1,4 +1,4 @@
-import * as S from "./styled";
+import { Box } from '@mantine/core';
 
 export interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -7,7 +7,9 @@ export interface DefaultLayoutProps {
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   return (
     <>
-      <S.DefaultLayoutContainer>{children}</S.DefaultLayoutContainer>
+      <Box w="100%" h="100%" bg="#fff" style={{ overflow: 'auto' }}>
+        {children}
+      </Box>
     </>
   );
 };
