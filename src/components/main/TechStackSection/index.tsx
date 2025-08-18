@@ -45,26 +45,28 @@ export const TechStackSection: React.FC = memo(() => {
   return (
     <>
       <BaseLayout direction="column" justify="flex-start" align="center" gap={100}>
-        <Text size={8} weight={900} color="linear-gradient(to right, #FF8C42 0%, #FFE5B4 50%,#FF8C42 100%)">
-          My TechStacks
-        </Text>
-        <Tabs
-          width="100%"
-          height="100%"
-          defaultValue={techStackTabsItem[0].tabsValue}
-          tabsItems={techStackTabsItem}
-          listGrow
-          tabsStyles={{
-            root: {
-              overflow: 'auto',
-            },
-          }}
-          tabsTabStyles={{
-            tabLabel: {
-              fontWeight: 900,
-            },
-          }}
-        />
+        <Stack pt="xl">
+          <Text size={8} weight={900} color="linear-gradient(to right, #FF8C42 0%, #FFE5B4 50%,#FF8C42 100%)">
+            My TechStacks
+          </Text>
+          <Tabs
+            width="100%"
+            height="auto"
+            defaultValue={techStackTabsItem[0].tabsValue}
+            tabsItems={techStackTabsItem}
+            listGrow
+            tabsStyles={{
+              root: {
+                overflow: 'auto',
+              },
+            }}
+            tabsTabStyles={{
+              tabLabel: {
+                fontWeight: 900,
+              },
+            }}
+          />
+        </Stack>
       </BaseLayout>
     </>
   );
