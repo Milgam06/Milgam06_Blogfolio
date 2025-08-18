@@ -11,14 +11,14 @@ type IContentTypeItemProps = {
 };
 
 export const Header: React.FC = memo(() => {
-  const [segmentItem, setSegmentItem] = useState<IContentType>('BLOG');
+  const [segmentItem, setSegmentItem] = useState<IContentType>('PORTFOLIO');
 
   const { setContentType } = useContentTypeStore();
 
   const ContentTypeItems: IContentTypeItemProps[] = useMemo(() => {
     const items: IContentTypeItemProps[] = [
-      { label: '블로그', value: 'BLOG' },
       { label: '포트폴리오', value: 'PORTFOLIO' },
+      { label: '블로그', value: 'BLOG' },
     ];
     return items;
   }, []);

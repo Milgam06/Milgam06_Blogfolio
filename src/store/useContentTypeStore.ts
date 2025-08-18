@@ -10,8 +10,8 @@ interface IContentTypeStoreProps {
 
 export const useContentTypeStore = create<IContentTypeStoreProps>((set) => ({
   contentType: 'PORTFOLIO',
-  setContentType: () =>
-    set(({ contentType }) => ({
+  setContentType: ({ contentType }) =>
+    set(() => ({
       contentType,
     })),
 }));
