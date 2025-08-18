@@ -113,36 +113,20 @@ export const StepSection: React.FC = () => {
         emblaOptions={{ loop: true, align: 'center', slidesToScroll: 3 }}>
         {stories.map((step) => {
           return (
-            <>
-              <Carousel.Slide key={step.id} h={200} onMouseEnter={onHoverOnStep(step)} my="lg">
-                <BackgroundImage
-                  key={step.id}
-                  w="100%"
-                  h="100%"
-                  src={step.filesUrl[0]}
-                  radius={15}
-                  styles={{
-                    root: {
-                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                    },
-                  }}
-                />
-              </Carousel.Slide>
-              <Carousel.Slide key={step.id} h={200} onMouseEnter={onHoverOnStep(step)} my="lg">
-                <BackgroundImage
-                  key={step.id}
-                  w="100%"
-                  h="100%"
-                  src={step.filesUrl[0]}
-                  radius={15}
-                  styles={{
-                    root: {
-                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                    },
-                  }}
-                />
-              </Carousel.Slide>
-            </>
+            <Carousel.Slide key={step.id} h={200} onMouseEnter={onHoverOnStep(step)} my="lg">
+              <BackgroundImage
+                key={step.id}
+                w="100%"
+                h="100%"
+                src={step.filesUrl[0]}
+                radius={15}
+                styles={{
+                  root: {
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+                  },
+                }}
+              />
+            </Carousel.Slide>
           );
         })}
         {isLoggedIn && (
